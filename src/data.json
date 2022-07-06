@@ -1,0 +1,356 @@
+{
+    "data":[
+        {
+            "name": "Велосипед Stels Navigator 400 MD",
+            "wheel-size": 24,
+            "speeds": 18,
+            "color": "blue",
+            "make": "Stels",
+            "weight": 15.5,
+            "price": 610,
+            "type": "mount",
+            "img": "stels-navigator-400-md.jpeg",
+            "brakes": "disk",
+            "brake-type": "mechanical",
+            "made-for": "teens",
+            "age": 2020
+        },
+
+        {
+            "name": "Велосипед Krakken Flint 29 р.20 2021",
+            "wheel-size": 29,
+            "speeds": 21,
+            "color": "black",
+            "make": "Krakken",
+            "weight": 18,
+            "price": 657,
+            "type": "mount",
+            "img": "krakken-flint.jpeg",
+            "brakes": "disk",
+            "brake-type": "mechanical",
+            "made-for": "adult",
+            "age": 2021
+        },
+
+        {
+            "name": "Велосипед Stark Madness BMX 3",
+            "wheel-size": 20,
+            "speeds": 1,
+            "color": "silver",
+            "make": "Stark",
+            "weight": 12.5,
+            "price": 724,
+            "type": "BMX",
+            "img": "Stark Madness BMX 3.jpeg",
+            "brakes": "v-brake",
+            "brake-type": "mechanical",
+            "made-for": "teens",
+            "age": 2021
+        },
+
+        {
+            "name": "Велосипед Bibi Mars",
+            "wheel-size": 24,
+            "speeds": 6,
+            "color": "orange",
+            "make": "Bibi",
+            "weight": 14,
+            "price": 549,
+            "type": "mount",
+            "img": "Велосипед Bibi Mars 24.jpeg",
+            "brakes": "v-brake",
+            "brake-type": "mechanical",
+            "made-for": "teens",
+            "age": 2021
+        },
+
+        {
+            "name": "Велосипед Stels Miss 6100 MD",
+            "wheel-size": 26,
+            "speeds": 21,
+            "color": "blue",
+            "make": "Stels",
+            "weight": 13,
+            "price": 990,
+            "type": "cross-country",
+            "img": "Велосипед Stels Miss 6100 MD.jpeg",
+            "brakes": "disk",
+            "brake-type": "mechanical",
+            "made-for": "teens",
+            "age": 2020
+        },
+
+        {
+            "name": "Велосипед FORSAGE Riot-x",
+            "wheel-size": 26,
+            "speeds": 27,
+            "color": "black",
+            "make": "FORSAGE",
+            "weight": 18,
+            "price": 2098.45,
+            "type": "fat-bike",
+            "img": "Велосипед FORSAGE Riot-x.jpeg",
+            "brakes": "disk",
+            "brake-type": "hydraulic",
+            "made-for": "adult",
+            "age": 2018
+        },
+
+        {
+            "name": "Велосипед AIST Jazz 2.0",
+            "wheel-size": 26,
+            "speeds": 3,
+            "color": "pink",
+            "make": "AIST",
+            "weight": 12,
+            "price": 1330,
+            "type": "city-bike",
+            "img": "Велосипед AIST Jazz 2.0.jpeg",
+            "brakes": "v-brake",
+            "brake-type": "mechanical",
+            "made-for": "adult",
+            "age": 2017
+        },
+
+        {
+            "name": "Велосипед Greenway Colibri-H",
+            "wheel-size": 26,
+            "speeds": 21,
+            "color": "blue",
+            "make": "Greenway",
+            "weight": 10,
+            "price": 760,
+            "type": "mount",
+            "img": "Велосипед Greenway Colibri-H.jpeg",
+            "brakes": "disk",
+            "brake-type": "mechanical",
+            "made-for": "lady",
+            "age": 2018
+        },
+
+        {
+            "name": "Велосипед Cube Analog",
+            "wheel-size": 27.5,
+            "speeds": 27,
+            "color": "black",
+            "make": "Cube",
+            "weight": 14.3,
+            "price": 2995,
+            "type": "cross-country",
+            "img": "Велосипед Cube Analog.jpeg",
+            "brakes": "disk",
+            "brake-type": "hydraulic",
+            "made-for": "adult",
+            "age": 2018
+        },
+
+        {
+            "name": "Велосипед Cube AIM Pro 29 L",
+            "wheel-size": 29,
+            "speeds": 24,
+            "color": "black",
+            "make": "Cube",
+            "weight": 14.4,
+            "price": 2213,
+            "type": "cross-country",
+            "img": "Велосипед Cube AIM Pro 29 L.jpeg",
+            "brakes": "disk",
+            "brake-type": "hydraulic",
+            "made-for": "adult",
+            "age": 2018
+        },
+
+        {
+            "name": "Велосипед AIST 28-245 с корзиной",
+            "wheel-size": 28,
+            "speeds": 1,
+            "color": "blue",
+            "make": "AIST",
+            "weight": 13,
+            "price": 460,
+            "type": "city-bike",
+            "img": "Велосипед AIST 28-245 с корзиной.jpeg",
+            "brakes": "coaster",
+            "brake-type": "mechanical",
+            "made-for": "lady",
+            "age": 2019
+        },
+
+        {
+            "name": "Велосипед Trek FX 1 M 2021",
+            "wheel-size": 28,
+            "speeds": 21,
+            "color": "black",
+            "make": "Trek",
+            "weight": 12.57,
+            "price": 1489,
+            "type": "city-bike",
+            "img": "Велосипед Trek FX 1 M 2021.jpeg",
+            "brakes": "v-brake",
+            "brake-type": "mechanical",
+            "made-for": "adult",
+            "age": 2021
+        },
+
+        {
+            "name": "Trek Marlin 7 29 M",
+            "wheel-size": 29,
+            "speeds": 10,
+            "color": "black",
+            "make": "Trek",
+            "weight": 13.77,
+            "price": 2449,
+            "type": "mount",
+            "img": "Велосипед Trek Marlin 7 29 M.jpeg",
+            "brakes": "disk",
+            "brake-type": "hydraulic",
+            "made-for": "adult",
+            "age": 2021
+        },
+
+        {
+            "name": "Greenway 6702M",
+            "wheel-size": 26,
+            "speeds": 21,
+            "color": "pink",
+            "make": "Greenway",
+            "weight": 15,
+            "price": 772,
+            "type": "mount",
+            "img": "Greenway 6702M.jpeg",
+            "brakes": "disk",
+            "brake-type": "mechanical",
+            "made-for": "lady",
+            "age": 2020
+        },
+
+        {
+            "name": "Forward Bizon 26",
+            "wheel-size": 26,
+            "speeds": 8,
+            "color": "black",
+            "make": "Forward",
+            "weight": 22,
+            "price": 1668,
+            "type": "fat-bike",
+            "img": "Forward Bizon 26.jpeg",
+            "brakes": "disk",
+            "brake-type": "mechanical",
+            "made-for": "adult",
+            "age": 2021
+        },
+
+        {
+            "name": "Cannondale Trail 5 29 M",
+            "wheel-size": 29,
+            "speeds": 18,
+            "color": "blue",
+            "make": "Cannondale",
+            "weight": 13,
+            "price": 2550,
+            "type": "mount",
+            "img": "Cannondale Trail 5 29 M.jpeg",
+            "brakes": "disk",
+            "brake-type": "hydraulic",
+            "made-for": "adult",
+            "age": 2020
+        },
+
+        {
+            "name": "Trek Marlin 6 29 ML",
+            "wheel-size": 29,
+            "speeds": 16,
+            "color": "blue",
+            "make": "Trek",
+            "weight": 14.41,
+            "price": 1990,
+            "type": "mount",
+            "img": "Trek Marlin 6 29 ML.jpeg",
+            "brakes": "disk",
+            "brake-type": "hydraulic",
+            "made-for": "adult",
+            "age": 2020
+        },
+
+        {
+            "name": "Shulz Hopper 3",
+            "wheel-size": 26,
+            "speeds": 3,
+            "color": "yellow",
+            "make": "Shulz",
+            "weight": 10.9,
+            "price": 1435,
+            "type": "city-byke",
+            "img": "Shulz Hopper 3.jpeg",
+            "brakes": "v-brake",
+            "brake-type": "mechanical",
+            "made-for": "teens",
+            "age": 2022
+        },
+
+        {
+            "name": "AIST Rocky 1.0",
+            "wheel-size": 26,
+            "speeds": 21,
+            "color": "red",
+            "make": "AIST",
+            "weight": 14,
+            "price": 810,
+            "type": "mount",
+            "img": "AIST Rocky 1.0.jpeg",
+            "brakes": "v-brake",
+            "brake-type": "mechanical",
+            "made-for": "adult",
+            "age": 2021
+        },
+
+        {
+            "name": "Shulz Wanderer S",
+            "wheel-size": 28,
+            "speeds": 18,
+            "color": "black",
+            "make": "Shulz",
+            "weight": 12.9,
+            "price": 1955,
+            "type": "gravel",
+            "img": "Shulz Wanderer S.jpeg",
+            "brakes": "disk",
+            "brake-type": "mechanical",
+            "made-for": "adult",
+            "age": 2022
+        },
+
+        {
+            "name": "Trek Dual Sport 1 XL",
+            "wheel-size": 28,
+            "speeds": 21,
+            "color": "red",
+            "make": "Trek",
+            "weight": 13.73,
+            "price": 1639,
+            "type": "gibrid",
+            "img": "Trek Dual Sport 1 XL.jpeg",
+            "brakes": "disk",
+            "brake-type": "mechanical",
+            "made-for": "adult",
+            "age": 2022
+        },
+
+        {
+            "name": "Stark Cobra 29.2 HD",
+            "wheel-size": 29,
+            "speeds": 21,
+            "color": "black",
+            "make": "Stark",
+            "weight": 13,
+            "price": 1431,
+            "type": "city-byke",
+            "img": "Stark Cobra 29.2 HD.jpeg",
+            "brakes": "disk",
+            "brake-type": "hydraulic",
+            "made-for": "adult",
+            "age": 2020
+        }
+
+    ]
+}
