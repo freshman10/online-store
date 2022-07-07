@@ -1,3 +1,3 @@
-import { data } from '../src/data.json';
+import getData from './components/getData';
 
-console.log(data.length);
+console.log(getData());
