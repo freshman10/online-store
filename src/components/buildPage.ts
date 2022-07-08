@@ -44,4 +44,10 @@ export function buildPage(): void {
     ]);
     const onlineStoreLabel: HTMLElement = createElement('h1', logoContainer, ['shop-label'], 'Online Bicycle Store');
     const shopBinContainer: HTMLElement = createElement('div', header, ['bin-container']);
+    const binCounter: HTMLElement = createElement('p', shopBinContainer, ['bin-counter'], '0');
+    const main: HTMLElement = createElement('main', document.body, ['main']);
+    const filtersContainer: HTMLElement = createElement('div', main, ['filter-container']);
+    const filterByValue: HTMLElement = createElement('div', filtersContainer, ['filter-value']);
+    const filterByRange: HTMLElement = createElement('div', filtersContainer, ['filter-range']);
+    const filterBySearch: HTMLElement = createElement('div', filtersContainer, ['filter-search']);
 }
