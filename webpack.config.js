@@ -9,6 +9,7 @@ const isProd = !isDev;
 const baseConfig = {
     entry: path.resolve(__dirname, './src/index.ts'),
     mode: 'development',
+    stats: {children: true},
     module: {
         rules: [
             {
@@ -23,15 +24,12 @@ const baseConfig = {
                 use: ["html-loader"],
             },
             {
-                test: /\.(?:|gif|png|jpg|svg)$/,
-                type: 'asset/resource',
-                generator: {
-                  filename: () => {
-                    return isDev ? 'assets/img/[name][ext]' : 'img/[name].[contenthash][ext]';
-                  }
+                test: /\.(jpe?g|png|gif|svg)$/i, 
+                loader: 'file-loader',
+                options: {
+                  name: 'assets/img/[name].[ext]'
                 }
-              },
-
+            }
         ],
     },
     resolve: {

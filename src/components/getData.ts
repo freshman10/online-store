@@ -1,7 +1,7 @@
 import { data } from '../data.json';
 
-function getData () {
-    return data
+function getData() {
+    return data;
 }
 
 export default getData;
