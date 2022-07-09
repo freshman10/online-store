@@ -34,3 +34,51 @@
     font-size: 22px;
     text-align: center;
 }
+
+.filter-container {
+    display: flex;
+}
+
+.color-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+}
+
+.color-all {
+    font-size: 14px;
+    text-align: center;
+}
+
+.colors-storage {
+    display: flex;
+    gap: 5px;
+}
+
+.popular-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.popular-checkbox {
+    width: 25px;
+    height: 25px;
+    background-color: rgb(144, 196, 243);
+    border-radius: 4px;
+}
+
+.filter-value {
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    margin: 10px;
+    padding: 20px;
+    border: #1c241d solid 1px;
+    border-radius: 20px;
+    background-color: aliceblue;
+    box-shadow: 0 0.5em 0.5em -0.4em #1c241d;
+}
