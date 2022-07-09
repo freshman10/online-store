@@ -13,4 +13,5 @@ export interface DataObject {
     madeFor: string;
     age: number;
     popular: boolean;
+    items: number;
 }

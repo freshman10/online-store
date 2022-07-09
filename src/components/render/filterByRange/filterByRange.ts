@@ -15,7 +15,7 @@ function createRangeFilter(
     label: string,
     step = 1
 ): void {
-    const container: HTMLElement = createElement('div', parentElement, [`${field}-container`]);
+    const container: HTMLElement = createElement('div', parentElement, [`${field}-filter`]);
     createElement('h3', container, [`${field}-label`], label);
     const sliderAndInputs: HTMLElement = createElement('div', container, ['slider-input']);
     const inputFrom = createElement('input', sliderAndInputs, [`${field}-input`, 'from', 'input'], '', [
