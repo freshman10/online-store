@@ -14,7 +14,8 @@
             "brakeType": "mechanical",
             "madeFor": "teens",
             "age": 2020,
-            "popular": false
+            "popular": false,
+            "items":2
         },
 
         {
@@ -31,7 +32,8 @@
             "brakeType": "mechanical",
             "madeFor": "adult",
             "age": 2021,
-            "popular": false
+            "popular": false,
+            "items":3
         },
 
         {
@@ -48,7 +50,8 @@
             "brakeType": "mechanical",
             "madeFor": "teens",
             "age": 2021,
-            "popular": false
+            "popular": false,
+            "items":4
         },
 
         {
@@ -65,7 +68,8 @@
             "brakeType": "mechanical",
             "madeFor": "teens",
             "age": 2021,
-            "popular": false
+            "popular": false,
+            "items":5
         },
 
         {
@@ -82,7 +86,8 @@
             "brakeType": "mechanical",
             "madeFor": "teens",
             "age": 2020,
-            "popular": true
+            "popular": true,
+            "items": 6
         },
 
         {
@@ -99,7 +104,8 @@
             "brakeType": "hydraulic",
             "madeFor": "adult",
             "age": 2018,
-            "popular": false
+            "popular": false,
+            "items": 7
         },
 
         {
@@ -116,7 +122,8 @@
             "brakeType": "mechanical",
             "madeFor": "adult",
             "age": 2017,
-            "popular": false
+            "popular": false,
+            "items":8
         },
 
         {
@@ -133,7 +140,8 @@
             "brakeType": "mechanical",
             "madeFor": "lady",
             "age": 2018,
-            "popular": false
+            "popular": false,
+            "items":8
         },
 
         {
@@ -150,7 +158,8 @@
             "brakeType": "hydraulic",
             "madeFor": "adult",
             "age": 2018,
-            "popular": true
+            "popular": true,
+            "items":7
         },
 
         {
@@ -167,7 +176,8 @@
             "brakeType": "hydraulic",
             "madeFor": "adult",
             "age": 2018,
-            "popular": false
+            "popular": false,
+            "items":6
         },
 
         {
@@ -184,7 +194,8 @@
             "brakeType": "mechanical",
             "madeFor": "lady",
             "age": 2019,
-            "popular": false
+            "popular": false,
+            "items":5
         },
 
         {
@@ -201,7 +212,8 @@
             "brakeType": "mechanical",
             "madeFor": "adult",
             "age": 2021,
-            "popular": false
+            "popular": false,
+            "items":4
         },
 
         {
@@ -218,7 +230,8 @@
             "brakeType": "hydraulic",
             "madeFor": "adult",
             "age": 2021,
-            "popular": true
+            "popular": true,
+            "items":3
         },
 
         {
@@ -235,7 +248,8 @@
             "brakeType": "mechanical",
             "madeFor": "lady",
             "age": 2020,
-            "popular": false
+            "popular": false,
+            "items":3
         },
 
         {
@@ -252,7 +266,8 @@
             "brakeType": "mechanical",
             "madeFor": "adult",
             "age": 2021,
-            "popular": false
+            "popular": false,
+            "items":1
         },
 
         {
@@ -269,7 +284,8 @@
             "brakeType": "hydraulic",
             "madeFor": "adult",
             "age": 2020,
-            "popular": true
+            "popular": true,
+            "items":1
         },
 
         {
@@ -286,7 +302,8 @@
             "brakeType": "hydraulic",
             "madeFor": "adult",
             "age": 2020,
-            "popular": false
+            "popular": false,
+            "items":2
         },
 
         {
@@ -303,7 +320,8 @@
             "brakeType": "mechanical",
             "madeFor": "teens",
             "age": 2022,
-            "popular": false
+            "popular": false,
+            "items":2
         },
 
         {
@@ -320,7 +338,8 @@
             "brakeType": "mechanical",
             "madeFor": "adult",
             "age": 2021,
-            "popular": false
+            "popular": false,
+            "items":2
         },
 
         {
@@ -337,7 +356,8 @@
             "brakeType": "mechanical",
             "madeFor": "adult",
             "age": 2022,
-            "popular": false
+            "popular": false,
+            "items":3
         },
 
         {
@@ -354,7 +374,8 @@
             "brakeType": "mechanical",
             "madeFor": "adult",
             "age": 2022,
-            "popular": false
+            "popular": false,
+            "items":1
         },
 
         {
@@ -371,7 +392,8 @@
             "brakeType": "hydraulic",
             "madeFor": "adult",
             "age": 2020,
-            "popular": false
+            "popular": false,
+            "items":2
         },
 
         {
@@ -388,7 +410,8 @@
             "brakeType": "mechanical",
             "madeFor": "adult",
             "age": 2020,
-            "popular": false
+            "popular": false,
+            "items":6
         },
 
         {
@@ -405,7 +428,8 @@
             "brakeType": "mechanical",
             "madeFor": "adult",
             "age": 2020,
-            "popular": false
+            "popular": false,
+            "items":5
         },
 
         {
@@ -422,7 +446,8 @@
             "brakeType": "hydraulic",
             "madeFor": "adult",
             "age": 2020,
-            "popular": true
+            "popular": true,
+            "items":5
         }
 
     ]

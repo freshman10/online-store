@@ -42,6 +42,7 @@
   },
   "dependencies": {
     "autoprefixer": "10.4.5",
-    "axios": "^0.27.2"
+    "axios": "^0.27.2",
+    "nouislider": "^15.6.0"
   }
 }

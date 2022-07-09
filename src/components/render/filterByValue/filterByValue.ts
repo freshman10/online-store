@@ -42,7 +42,7 @@ function createPopularFilter(parentElement: HTMLElement): void {
 }
 
 export function renderFilterByValue(parentElement: HTMLElement, data: DataObject[]): void {
-    const filterByValue: HTMLElement = createElement('div', parentElement, ['filter-value']);
+    const filterByValue: HTMLElement = createElement('div', parentElement, ['filter-value', 'filter']);
     const filterByValueCaption: HTMLElement = createElement(
         'h2',
         filterByValue,
@@ -53,18 +53,4 @@ export function renderFilterByValue(parentElement: HTMLElement, data: DataObject
     createDropDownList(filterByValue, 'brakes', data, 'Brakes');
     createColorFilter(filterByValue, data);
     createPopularFilter(filterByValue);
-    /*
-
-    const companyContainer: HTMLElement = createElement('div', filterByValue, ['company-container']);
-    const companyLabel: HTMLElement = createElement('h3', companyContainer, ['filter-option'], 'Company:');
-    companyContainer.appendChild(dropdownCompany);
-    const bykeTypeContainer: HTMLElement = createElement('div', filterByValue, ['type-container']);
-    const typeLabel: HTMLElement = createElement('h3', bykeTypeContainer, ['filter-option'], 'Type:');
-    const brakesContainer: HTMLElement = createElement('div', filterByValue, ['brakes-container']);
-    const brakesLabel: HTMLElement = createElement('h3', brakesContainer, ['filter-option'], 'Brakes:');
-    const colorsContainer: HTMLElement = createElement('div', filterByValue, ['colors-container']);
-    const colorsLabel: HTMLElement = createElement('h3', colorsContainer, ['filter-option'], 'Colors:');
-    const onlyPopularContainer: HTMLElement = createElement('div', filterByValue, ['popular-container']);
-    const popularLabel: HTMLElement = createElement('h3', onlyPopularContainer, ['filter-option'], 'Show popular:');
-    */
 }

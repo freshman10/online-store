@@ -1,3 +1,5 @@
+@import 'nouislider/dist/nouislider.css';
+
 * {
     margin: 0;
     padding: 0;
@@ -37,6 +39,8 @@
 
 .filter-container {
     display: flex;
+    flex-direction: column;
+    width: fit-content;
 }
 
 .color-item {
@@ -71,7 +75,7 @@
     border-radius: 4px;
 }
 
-.filter-value {
+.filter {
     display: flex;
     flex-direction: column;
     gap:10px;
@@ -81,4 +85,33 @@
     border-radius: 20px;
     background-color: aliceblue;
     box-shadow: 0 0.5em 0.5em -0.4em #1c241d;
+}
+
+.slider-input {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.slider {
+    width: 120px;
+}
+
+.input {
+    width: 40px;
+    height: 20px;
+    padding: 5px;
+    border: #1c241d 2px solid;
+    border-radius: 10px;
+    font-size: 16px;
+    text-align: center;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
 }
