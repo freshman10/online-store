@@ -1,12 +1,13 @@
-import { DataObject } from '../../types';
-import { createElement } from '../generateElement';
+import { DataObject } from './../types';
+import { addToDOMStorage, createElement, elementDomStorage } from './generateElement';
 
 function createCard(data: DataObject): HTMLElement {
     const container = document.createElement('div');
     container.classList.add('item-container');
+    addToDOMStorage(container);
     createElement('h3', container, ['item-name'], data.name);
-    const path = require(`../../../assets/img/${data.img}`);
-    createElement('img', container, ['item-img'], '', [['src', `../../../assets/img/${data.img}`]]);
+    require(`../../assets/img/${data.img}`);
+    createElement('img', container, ['item-img'], '', [['src', `../../assets/img/${data.img}`]]);
     createElement('p', container, ['description'], `Quantity: ${data.items}`);
     createElement('p', container, ['description'], `Production year: ${data.age}`);
     createElement('p', container, ['description'], `Company: ${data.make}`);
@@ -14,11 +15,15 @@ function createCard(data: DataObject): HTMLElement {
     createElement('p', container, ['description'], `Brakes: ${data.brakes}`);
     createElement('p', container, ['description'], `Price: ${data.price}`);
     createElement('p', container, ['description'], `Popular: ${data.popular ? 'Yes' : 'No'}`);
+    const addedContainer: HTMLElement = createElement('div', container, ['added-container', 'basket']);
+    createElement('p', addedContainer, ['added-text'], 'Added to Cart');
     return container;
 }
 
-export function renderItems(parentElement: HTMLElement, data: DataObject[]): void {
-    parentElement.innerHTML = '';
-    data.forEach((item) => parentElement.appendChild(createCard(item)));
-    //console.log(path.basename);
+export function renderItems(data: DataObject[]): void {
+    const parentElement = elementDomStorage.get('items-container');
+    parentElement?.forEach((el) => {
+        el.innerHTML = '';
+        data.forEach((item) => el.appendChild(createCard(item)));
+    });
 }

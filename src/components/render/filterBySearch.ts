@@ -1,9 +1,8 @@
-import { DataObject } from '../../types';
-import { createElement } from '../generateElement';
-import { sortingTypes, reserButtons } from '../../../constants/constants';
+import { createElement } from './generateElement';
+import { sortingTypes, reserButtons } from '../../constants/constants';
 
 function createSearchInput(parentElement: HTMLElement): void {
-    const inputSearch: HTMLElement = createElement('input', parentElement, ['input-search'], '', [['type', 'search']]);
+    createElement('input', parentElement, ['input-search'], '', [['type', 'search']]);
 }
 
 function createSortingList(parentElement: HTMLElement, items: string[]): void {
@@ -15,7 +14,7 @@ function createSortingList(parentElement: HTMLElement, items: string[]): void {
     });
 }
 
-export function renderFilterBySearch(parentElement: HTMLElement, data: DataObject[]): void {
+export function renderFilterBySearch(parentElement: HTMLElement): void {
     const filterBySearch: HTMLElement = createElement('div', parentElement, ['filter-search', 'filter']);
     createElement('h2', filterBySearch, ['filter-caption'], 'Search');
     createSearchInput(filterBySearch);

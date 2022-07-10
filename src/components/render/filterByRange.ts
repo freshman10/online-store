@@ -1,5 +1,5 @@
-import { DataObject } from '../../types';
-import { createElement } from '../generateElement';
+import { DataObject } from '../types';
+import { createElement } from './generateElement';
 import * as noUiSlider from 'nouislider';
 
 function getMinMax(data: DataObject[], field: string): number[] {
@@ -45,12 +45,11 @@ function createRangeFilter(
         },
     });
     [inputFrom, inputTo].forEach((el) => {
-        el.addEventListener('change', function (e) {
+        el.addEventListener('change', function () {
             sliderContainer.noUiSlider?.set([inputFrom.valueAsNumber, inputTo.valueAsNumber]);
         });
     });
     sliderContainer.noUiSlider?.on('update', function (values, handle) {
-        console.log(values);
         inputFrom.value = values[0] as string;
         inputTo.value = values[1] as string;
     });
@@ -58,12 +57,7 @@ function createRangeFilter(
 
 export function renderFilterByRange(parentElement: HTMLElement, data: DataObject[]): void {
     const filterByRange: HTMLElement = createElement('div', parentElement, ['filter-range', 'filter']);
-    const filterByRangeCaption: HTMLElement = createElement(
-        'h2',
-        filterByRange,
-        ['filter-caption'],
-        'Filters by range'
-    );
+    createElement('h2', filterByRange, ['filter-caption'], 'Filters by range');
     createRangeFilter(filterByRange, data, 'age', 'Production year');
     createRangeFilter(filterByRange, data, 'wheel', 'Wheel size');
     createRangeFilter(filterByRange, data, 'price', 'Price');

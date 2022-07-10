@@ -1,5 +1,5 @@
-import { createElement } from '../generateElement';
-import { DataObject } from '../../types';
+import { addToDOMStorage, createElement } from './generateElement';
+import { DataObject } from '../types';
 
 function createDropDownList(parentElement: HTMLElement, field: string, data: DataObject[], label: string): void {
     const companyContainer: HTMLElement = createElement('div', parentElement, [`${label}-container`]);
@@ -8,9 +8,11 @@ function createDropDownList(parentElement: HTMLElement, field: string, data: Dat
     storage.add('ALL');
     const dropDownList: HTMLSelectElement = document.createElement('select');
     dropDownList.classList.add(field, 'dropdown');
+    addToDOMStorage(dropDownList);
     data.forEach((el) => storage.add(el[field as keyof typeof el]));
     storage.forEach((el) => {
         const option: HTMLOptionElement = document.createElement('option');
+        addToDOMStorage(option);
         option.setAttribute('value', el as string);
         option.textContent = el as string;
         dropDownList.appendChild(option);
@@ -43,12 +45,7 @@ function createPopularFilter(parentElement: HTMLElement): void {
 
 export function renderFilterByValue(parentElement: HTMLElement, data: DataObject[]): void {
     const filterByValue: HTMLElement = createElement('div', parentElement, ['filter-value', 'filter']);
-    const filterByValueCaption: HTMLElement = createElement(
-        'h2',
-        filterByValue,
-        ['filter-caption'],
-        'Filters by value'
-    );
+    createElement('h2', filterByValue, ['filter-caption'], 'Filters by value');
     createDropDownList(filterByValue, 'make', data, 'Company');
     createDropDownList(filterByValue, 'brakes', data, 'Brakes');
     createColorFilter(filterByValue, data);

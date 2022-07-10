@@ -1,6 +1,6 @@
 export const elementDomStorage = new Map<string, HTMLElement[]>();
 
-function addToDOMStorage(element: HTMLElement): void {
+export function addToDOMStorage(element: HTMLElement): void {
     element.classList.forEach((cls) => {
         if (elementDomStorage.has(cls)) {
             elementDomStorage.get(cls)?.push(element);

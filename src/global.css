@@ -166,17 +166,38 @@ input[type="number"] {
 }
 
 .item-container {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 5px;
     align-items: center;
+    flex-basis: 1;
     width: 220px;
+    max-height: 350px;
     padding: 1em;
     border: #1c241d 2px solid;
     border-radius: 1em;
     box-shadow: 0 0.5em 0.5em -0.4em #1c241d;
 }
 
+.item-container:hover {
+    box-shadow: 0.8em 0.8em 0.8em -0.4em rgb(144, 196, 243);;
+}
+
 .description {
     font-size: 1.1em;
+}
+
+.basket {
+    display: none;
+}
+
+.added-container {
+    position: absolute;
+    top: -15px;
+    right: -30px;
+    padding: 5px 10px;
+    background-color: azure;
+    border: #1c241d 1px solid;
+    border-radius: 10px;
 }
