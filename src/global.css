@@ -56,6 +56,16 @@
     border-radius: 100%;
 }
 
+.checked {
+    transform: scale(1.5);
+    background-color: white;
+}
+
+.color-item:hover {
+    cursor: pointer;
+    transform: scale(1.5);
+}
+
 .color-all {
     font-size: 14px;
     text-align: center;
@@ -63,7 +73,7 @@
 
 .colors-storage {
     display: flex;
-    gap: 5px;
+    gap: 15px;
 }
 
 .popular-container {
@@ -90,8 +100,6 @@
     background-color: aliceblue;
     box-shadow: 0 0.5em 0.5em -0.4em #1c241d;
 }
-
-
 
 .slider-input {
     display: flex;
@@ -200,4 +208,13 @@ input[type="number"] {
     background-color: azure;
     border: #1c241d 1px solid;
     border-radius: 10px;
+}
+
+.checked-img {
+    width: 20px;
+    padding-left: 5px;
+}
+
+.hide {
+    display: none;
 }

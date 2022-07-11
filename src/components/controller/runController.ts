@@ -4,7 +4,7 @@ import getData from '../getData';
 import { elementDomStorage } from '../render/generateElement';
 import { renderItems } from '../render/items';
 import { DataObject } from '../types';
-import { addToBasket } from './addToBasket';
+import { addToBasket, checkBoxListners } from './AddEventListners';
 
 function setEventListners(data: DataObject[]): void {
     addToBasket();
@@ -12,6 +12,8 @@ function setEventListners(data: DataObject[]): void {
     options.set('input-search', ['input']);
     options.set('dropdown', ['change']);
     generateListners(options, data);
+    checkBoxListners('color-item', 'click', 'checked', data);
+    checkBoxListners('popular-checkbox', 'click', 'hide', data);
 }
 
 function generateListners(options: Map<string, string[]>, data: DataObject[]): void {

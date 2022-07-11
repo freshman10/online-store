@@ -28,9 +28,10 @@ function createColorFilter(parentElement: HTMLElement, data: DataObject[]): void
     storage.add('ALL');
     data.forEach((el) => storage.add(el.color));
     storage.forEach((color) => {
-        const colorItem = createElement('div', colorsContainer, ['color-item']);
+        const colorItem = createElement('div', colorsContainer, ['color-item'], '', [['value', `${color}`]]);
         if (color === 'ALL') {
             createElement('p', colorItem, ['color-all'], 'All');
+            colorItem.classList.add('checked');
         }
         colorItem.style.backgroundColor = color as string;
         colorsContainer.appendChild(colorItem);
@@ -40,7 +41,11 @@ function createColorFilter(parentElement: HTMLElement, data: DataObject[]): void
 function createPopularFilter(parentElement: HTMLElement): void {
     const container = createElement('div', parentElement, ['popular-container']);
     createElement('h3', container, ['popular-label'], 'Show popular:');
-    createElement('div', container, ['popular-checkbox']);
+    const populatCheckbox = createElement('div', container, ['popular-checkbox']);
+    createElement('img', populatCheckbox, ['checked-img', 'hide'], '', [
+        ['src', '../../assets/img/tick.png'],
+        ['alt', 'green tick'],
+    ]);
 }
 
 export function renderFilterByValue(parentElement: HTMLElement, data: DataObject[]): void {
