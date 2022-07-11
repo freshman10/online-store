@@ -5,6 +5,7 @@ import { filterDroplist } from './filterDroplist';
 import { popularFilter } from './popularFilter';
 import { rangeFilter } from './rangeFilter';
 import { search } from './search';
+import { sortBy } from './sortBy';
 
 export function applyAll(data: DataObject[]): DataObject[] {
     const element = elementDomStorage.get('input-search')?.slice(0, 1)[0] as HTMLInputElement;
@@ -18,6 +19,7 @@ export function applyAll(data: DataObject[]): DataObject[] {
         ['age', 'wheel', 'price', 'items'].forEach((el) => {
             filteredData = rangeFilter(filteredData, el);
         });
+        filteredData = sortBy(filteredData);
         return filteredData;
     }
     return data;

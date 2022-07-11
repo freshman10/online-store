@@ -11,6 +11,7 @@ function setEventListners(data: DataObject[]): void {
     const options: Map<string, string[]> = new Map();
     options.set('input-search', ['input']);
     options.set('dropdown', ['change']);
+    options.set('sorting-droplist', ['change']);
     generateListners(options, data);
     checkBoxListners('color-item', 'click', 'checked', data);
     checkBoxListners('popular-checkbox', 'click', 'hide', data);
