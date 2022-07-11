@@ -1,6 +1,8 @@
 import { DataObject } from '../types';
 import { createElement } from './generateElement';
 import * as noUiSlider from 'nouislider';
+import { applyAll } from '../filters/applyAllFilters';
+import { renderItems } from './items';
 
 function getMinMax(data: DataObject[], field: string): number[] {
     const storage = new Set<number>();
@@ -47,11 +49,15 @@ function createRangeFilter(
     [inputFrom, inputTo].forEach((el) => {
         el.addEventListener('change', function () {
             sliderContainer.noUiSlider?.set([inputFrom.valueAsNumber, inputTo.valueAsNumber]);
+            const filtered = applyAll(data);
+            renderItems(filtered);
         });
     });
     sliderContainer.noUiSlider?.on('update', function (values, handle) {
         inputFrom.value = values[0] as string;
         inputTo.value = values[1] as string;
+        const filtered = applyAll(data);
+        renderItems(filtered);
     });
 }
 

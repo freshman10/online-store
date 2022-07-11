@@ -185,11 +185,12 @@ input[type="number"] {
     padding: 1em;
     border: #1c241d 2px solid;
     border-radius: 1em;
-    box-shadow: 0 0.5em 0.5em -0.4em #1c241d;
+    box-shadow: 0 0.5em 0.5em -0.4em #1c241d,
 }
 
 .item-container:hover {
-    box-shadow: 0.8em 0.8em 0.8em -0.4em rgb(144, 196, 243);;
+    box-shadow: 0.8em 0.8em 0.8em -0.4em rgb(144, 196, 243),
+    -0.8em -0.8em 0.8em -0.4em rgb(144, 196, 243);
 }
 
 .description {
