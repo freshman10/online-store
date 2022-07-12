@@ -1,4 +1,4 @@
-export const sortingTypes = [
+export const sortingTypes: string[] = [
     'By name, increasing',
     'By name, decreasing',
     'By year, increasing',
@@ -7,4 +7,5 @@ export const sortingTypes = [
     'By quantity, decreasing',
 ];
 
-export const reserButtons = ['filters', 'setting'];
+export const reserButtons: string[] = ['filters', 'setting'];
+export const basketItemsStorage: string[] = [];

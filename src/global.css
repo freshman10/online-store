@@ -143,6 +143,11 @@ input[type="number"] {
     font-size: 1.2em;
 }
 
+.reset-button:hover {
+    cursor: pointer;
+    background-color:  rgb(144, 196, 243);
+}
+
 .sorting-droplist {
     width: 100%;
     font-size: 1.2em;
@@ -170,6 +175,7 @@ input[type="number"] {
     gap: 50px;
     justify-content: center;
     align-items: stretch;
+    width: 100%;
     padding: 20px;
 }
 
@@ -181,7 +187,7 @@ input[type="number"] {
     align-items: center;
     flex-basis: 1;
     width: 220px;
-    max-height: 350px;
+    max-height: 400px;
     padding: 1em;
     border: #1c241d 2px solid;
     border-radius: 1em;
@@ -218,4 +224,8 @@ input[type="number"] {
 
 .hide {
     display: none;
+}
+
+.attention {
+    align-self: center;
 }

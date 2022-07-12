@@ -10,7 +10,7 @@ function getMinMax(data: DataObject[], field: string): number[] {
     return [Math.min(...storage), Math.max(...storage)];
 }
 
-function createRangeFilter(
+export function createRangeFilter(
     parentElement: HTMLElement,
     data: DataObject[],
     field: string,
