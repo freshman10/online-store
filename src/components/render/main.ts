@@ -5,6 +5,7 @@ import { renderFilterBySearch } from './filterBySearch';
 import { renderItems } from './items';
 import { DataObject } from '../types';
 import { applyAll } from '../filters/applyAllFilters';
+import { renderWarning } from './warning';
 
 export function renderMain(data: DataObject[]): void {
     const main: HTMLElement = createElement('main', document.body, ['main']);
@@ -14,4 +15,5 @@ export function renderMain(data: DataObject[]): void {
     renderFilterBySearch(filtersContainer);
     createElement('div', main, ['items-container']);
     renderItems(applyAll(data));
+    renderWarning();
 }

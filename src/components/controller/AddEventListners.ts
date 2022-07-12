@@ -13,13 +13,27 @@ function renderBasket(items: number): void {
     elementDomStorage.get('bin-counter')?.forEach((el) => (el.textContent = items.toString()));
 }
 
+function showAttention() {
+    elementDomStorage.get('warning-container')?.forEach((el) => {
+        el.classList.remove('hide');
+    });
+    elementDomStorage.get('background-layer')?.forEach((el) => {
+        el.classList.remove('hide');
+    });
+}
+
 function saveToBasketItemsStorage(element: Element): void {
     const nameOfProduct: string = element.querySelector('.item-name')?.textContent || '';
     if (basketItemsStorage.includes(nameOfProduct) && nameOfProduct) {
         const index = basketItemsStorage.indexOf(nameOfProduct);
         basketItemsStorage.splice(index, 1);
     } else {
-        basketItemsStorage.push(nameOfProduct);
+        if (basketItemsStorage.length === 20) {
+            showAttention();
+            element.querySelector('.added-container')?.classList.toggle('basket');
+        } else {
+            basketItemsStorage.push(nameOfProduct);
+        }
     }
 }
 
