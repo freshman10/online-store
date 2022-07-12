@@ -8,7 +8,7 @@ function createCard(data: DataObject): HTMLElement {
     addToDOMStorage(container);
     createElement('h3', container, ['item-name'], data.name);
     require(`../../assets/img/${data.img}`);
-    createElement('img', container, ['item-img'], '', [['src', `../../assets/img/${data.img}`]]);
+    createElement('img', container, ['item-img'], '', [['src', `./assets/img/${data.img}`]]);
     createElement('p', container, ['description'], `Quantity: ${data.items}`);
     createElement('p', container, ['description'], `Production year: ${data.age}`);
     createElement('p', container, ['description'], `Company: ${data.make}`);

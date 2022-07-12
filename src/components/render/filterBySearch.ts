@@ -8,7 +8,7 @@ function createSearchInput(parentElement: HTMLElement): void {
 function createSortingList(parentElement: HTMLElement, items: string[]): void {
     const container: HTMLElement = createElement('div', parentElement, ['sorting-container']);
     createElement('h2', container, ['sorting-label'], 'Sort by');
-    const dropDownList: HTMLElement = createElement('select', container, ['sorting-droplist']);
+    const dropDownList: HTMLElement = createElement('select', container, ['sorting-droplist', 'dropdown']);
     items.forEach((item) => {
         createElement('option', dropDownList, ['sorting-option'], item, [['value', item]]);
     });
