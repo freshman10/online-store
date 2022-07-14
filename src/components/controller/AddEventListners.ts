@@ -4,7 +4,7 @@ import { elementDomStorage } from '../render/generateElement';
 import { renderItems } from '../render/items';
 import { DataObject } from '../types';
 import { createRangeFilter } from '../render/filterByRange';
-import { removeFromLocalStorage, saveToLocalStorage } from './localStorage';
+import { removeFromLocalStorage, resetLocalStorage, saveToLocalStorage } from './localStorage';
 
 function countItemsInBasket(): number {
     return basketItemsStorage.length;
@@ -86,6 +86,13 @@ function resetFilters(data: DataObject[]): void {
 function resetSettings(data: DataObject[]): void {
     resetFilters(data);
     resetSorting();
+    resetBasketItemStorage();
+    resetLocalStorage();
+}
+
+function resetBasketItemStorage(): void {
+    basketItemsStorage.splice(0, basketItemsStorage.length);
+    removeFromLocalStorage('basketItems');
 }
 
 export function resetCheckboxes(): void {
@@ -99,6 +106,7 @@ export function resetCheckboxes(): void {
 
 function resetPopular(): void {
     elementDomStorage.get('checked-img')?.forEach((el) => el.classList.add('hide'));
+    removeFromLocalStorage('popular');
 }
 
 function resetRangeFilters(data: DataObject[]): void {
@@ -120,11 +128,13 @@ function resetRangeFilters(data: DataObject[]): void {
 
 function resetSearch(): void {
     elementDomStorage.get('input-search')?.forEach((el) => ((el as HTMLInputElement).value = ''));
+    removeFromLocalStorage('search');
 }
 
 function resetSorting(): void {
     elementDomStorage.get('sorting-droplist')?.forEach((el) => ((el as HTMLSelectElement).selectedIndex = 0));
     basketItemsStorage.splice(0, basketItemsStorage.length);
+    removeFromLocalStorage('sort');
     const items = countItemsInBasket();
     renderBasket(items);
 }

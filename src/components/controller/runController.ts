@@ -28,8 +28,17 @@ function generateListners(options: Map<string, string[]>, data: DataObject[]): v
         elementDomStorage.get(key)?.forEach((el) => {
             value.forEach((eventType) => {
                 el.addEventListener(eventType, (e) => {
+                    if (key === 'input-search') {
+                        saveToLocalStorage('search', (el as HTMLInputElement).value);
+                    }
+                    if (key === 'sorting-droplist') {
+                        elementDomStorage.get(key)?.forEach((item) => {
+                            const input = item as HTMLSelectElement;
+                            const index = input.selectedIndex.toString();
+                            saveToLocalStorage('sort', index);
+                        });
+                    }
                     clearLocalStoreRemains();
-                    saveToLocalStorage('search', (el as HTMLInputElement).value);
                     const filtered = applyAll(data);
                     renderItems(filtered);
                 });
