@@ -181,7 +181,7 @@
         },
 
         {
-            "name": "AIST 28-245 с корзиной",
+            "name": "AIST 28-245",
             "wheel": 28,
             "speeds": 1,
             "color": "blue",

@@ -1,8 +1,8 @@
-import { data } from '../data.json';
+import data from '../data.json';
 import { DataObject } from './types';
 
 function getData(): DataObject[] {
-    return data;
+    return data.data;
 }
 
 export default getData;

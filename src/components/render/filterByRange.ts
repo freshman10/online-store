@@ -53,7 +53,7 @@ export function createRangeFilter(
             renderItems(filtered);
         });
     });
-    sliderContainer.noUiSlider?.on('update', function (values, handle) {
+    sliderContainer.noUiSlider?.on('update', function (values) {
         inputFrom.value = values[0] as string;
         inputTo.value = values[1] as string;
         const filtered = applyAll(data);

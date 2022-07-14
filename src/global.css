@@ -21,6 +21,10 @@
     width: 120px;
 }
 
+.logo-img:hover {
+    cursor: pointer;
+}
+
 .bin-container {
     width: 40px;
     height: 40px;
@@ -190,8 +194,7 @@ input[type="number"] {
 .items-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 50px;
-    justify-content: center;
+    gap: 30px;
     align-items: stretch;
     width: 100%;
     padding: 20px;
@@ -247,7 +250,7 @@ input[type="number"] {
 }
 
 .attention {
-    align-self: center;
+    margin: 100px auto 0;
 }
 
 .dropdown {
@@ -286,7 +289,7 @@ input[type="number"] {
 
 .warning-container {
     position: fixed;
-    top:50vh;
+    top:calc(50vh - 100px);
     left:calc(50vw - 250px);
     display: flex;
     flex-direction: column;
@@ -326,3 +329,53 @@ input[type="number"] {
 .hide {
     display: none;
 }
+
+.input-header-container {
+    display: flex;
+    gap: 10px;
+    padding: 5px;
+}
+
+.input-header-container:hover,
+.input-label:hover {
+    cursor: pointer;
+}
+
+.spoiler-triangle {
+    transform: rotate(0deg);
+    transition: 0.5s;
+}
+
+.rotate {
+    transform: rotate(90deg);
+    transition: 0.5s;
+}
+
+p, 
+h1, 
+h2, 
+h3,
+label {
+    user-select: none;
+}
+
+.spoiler-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.invisible {
+    visibility:hidden;
+    width: 0;
+    height: 0;
+}
+
+.input-label {
+    font-size: 1.2em;
+}
+
+.input-container,
+.spoiler {
+    width: fit-content;
+}
+

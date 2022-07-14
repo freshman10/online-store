@@ -9,8 +9,7 @@ export function search(data: DataObject[], pattern: string): DataObject[] {
 
 export function addSearch(data: DataObject[]): void {
     elementDomStorage.get('input-search')?.forEach((el) => {
-        el.addEventListener('input', (e) => {
-            const pattern: string = (el as HTMLInputElement).value;
+        el.addEventListener('input', () => {
             const filtered = applyAll(data);
             renderItems(filtered);
         });

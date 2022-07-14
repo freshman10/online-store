@@ -4,16 +4,26 @@ import { elementDomStorage } from '../render/generateElement';
 import { renderItems } from '../render/items';
 import { DataObject } from '../types';
 import { createRangeFilter } from '../render/filterByRange';
+import { removeFromLocalStorage, saveToLocalStorage } from './localStorage';
 
 function countItemsInBasket(): number {
     return basketItemsStorage.length;
 }
 
-function renderBasket(items: number): void {
+export function renderBasket(items: number): void {
     elementDomStorage.get('bin-counter')?.forEach((el) => (el.textContent = items.toString()));
+    saveToLocalStorage('basketCount', items.toString());
 }
 
-function showAttention() {
+export function renderBasketItems(): void {
+    elementDomStorage.get('item-container')?.forEach((el) => {
+        if (basketItemsStorage.includes(el.querySelector('.item-name')?.textContent as string)) {
+            el.querySelector('.added-container')?.classList.remove('basket');
+        }
+    });
+}
+
+function showAttention(): void {
     elementDomStorage.get('warning-container')?.forEach((el) => {
         el.classList.remove('hide');
     });
@@ -24,7 +34,7 @@ function showAttention() {
 
 function saveToBasketItemsStorage(element: Element): void {
     const nameOfProduct: string = element.querySelector('.item-name')?.textContent || '';
-    if (basketItemsStorage.includes(nameOfProduct) && nameOfProduct) {
+    if (nameOfProduct !== '' && basketItemsStorage.includes(nameOfProduct)) {
         const index = basketItemsStorage.indexOf(nameOfProduct);
         basketItemsStorage.splice(index, 1);
     } else {
@@ -35,6 +45,7 @@ function saveToBasketItemsStorage(element: Element): void {
             basketItemsStorage.push(nameOfProduct);
         }
     }
+    saveToLocalStorage('basketItems', basketItemsStorage.join('+++'));
 }
 
 export function addToBasket(): void {
@@ -47,34 +58,6 @@ export function addToBasket(): void {
                 const items = countItemsInBasket();
                 renderBasket(items);
             }
-        });
-    });
-}
-
-function removeChecked(elements: HTMLElement[], element: HTMLElement, classToRemove: string): void {
-    elements.forEach((el) => {
-        if (el !== element) {
-            el.classList.remove(classToRemove);
-        }
-    });
-}
-
-export function checkBoxListners(
-    elementClass: string,
-    eventType: string,
-    addedClass: string,
-    data: DataObject[]
-): void {
-    elementDomStorage.get(elementClass)?.forEach((el) => {
-        el.addEventListener(eventType, () => {
-            if (addedClass === 'hide') {
-                elementDomStorage.get('checked-img')?.slice(0, 1)[0].classList.toggle('hide');
-            } else {
-                el.classList.add(addedClass);
-                removeChecked(elementDomStorage.get(elementClass)!, el, addedClass);
-            }
-            const filtered = applyAll(data);
-            renderItems(filtered);
         });
     });
 }
@@ -94,7 +77,7 @@ export function resetButtonListners(target: string, eventType: string, data: Dat
 }
 
 function resetFilters(data: DataObject[]): void {
-    resetDropdownList('dropdown');
+    resetCheckboxes();
     resetColors();
     resetPopular();
     resetRangeFilters(data);
@@ -106,9 +89,12 @@ function resetSettings(data: DataObject[]): void {
     resetSorting();
 }
 
-function resetDropdownList(target: string): void {
-    elementDomStorage.get(target)?.forEach((el) => {
-        (el as HTMLSelectElement).selectedIndex = 0;
+export function resetCheckboxes(): void {
+    elementDomStorage.get('input')?.forEach((el) => {
+        (el as HTMLInputElement).checked = false;
+    });
+    ['input-make', 'input-brakes', 'input-color'].forEach((el) => {
+        removeFromLocalStorage(el);
     });
 }
 
@@ -152,4 +138,45 @@ function resetSorting(): void {
     basketItemsStorage.splice(0, basketItemsStorage.length);
     const items = countItemsInBasket();
     renderBasket(items);
+}
+
+export function addEventListnerSpoiler(elementClass: string, eventType: string, targets: [string, string][]): void {
+    elementDomStorage.get(elementClass)?.forEach((element) => {
+        element.addEventListener(eventType, () => {
+            targets.forEach((target) => {
+                element
+                    .closest('.spoiler')
+                    ?.querySelectorAll(`.${target[0]}`)
+                    .forEach((el) => {
+                        el.classList.toggle(target[1]);
+                    });
+            });
+        });
+    });
+}
+
+export function addEventListnerTemplate(
+    elementClass: string,
+    eventType: string,
+    targets: [string, string][],
+    data: DataObject[]
+): void {
+    elementDomStorage.get(elementClass)?.forEach((element) => {
+        element.addEventListener(eventType, () => {
+            targets.forEach((target) => {
+                element?.querySelectorAll(`.${target[0]}`).forEach((el) => {
+                    el.classList.toggle(target[1]);
+                    if (elementClass === 'popular-checkbox') {
+                        if (el.classList.contains('hide')) {
+                            saveToLocalStorage('popular', 'false');
+                        } else {
+                            saveToLocalStorage('popular', 'true');
+                        }
+                    }
+                });
+            });
+            const filteredData = applyAll(data);
+            renderItems(filteredData);
+        });
+    });
 }

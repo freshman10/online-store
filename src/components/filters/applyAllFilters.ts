@@ -1,7 +1,7 @@
 import { elementDomStorage } from '../render/generateElement';
 import { DataObject } from '../types';
 import { colorFilter } from './colorFilter';
-import { filterDroplist } from './filterDroplist';
+import { filterCheckbox } from './filterCheckbox';
 import { popularFilter } from './popularFilter';
 import { rangeFilter } from './rangeFilter';
 import { search } from './search';
@@ -12,10 +12,9 @@ export function applyAll(data: DataObject[]): DataObject[] {
     if (element) {
         const pattern = element.value;
         let filteredData = search(data, pattern);
-        filteredData = filterDroplist(filteredData, 'make');
-        filteredData = filterDroplist(filteredData, 'brakes');
         filteredData = colorFilter(filteredData);
         filteredData = popularFilter(filteredData);
+        filteredData = filterCheckbox(filteredData);
         ['age', 'wheel', 'price', 'items'].forEach((el) => {
             filteredData = rangeFilter(filteredData, el);
         });
