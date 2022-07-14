@@ -1,9 +1,11 @@
 import { applyAll } from '../filters/applyAllFilters';
+import { clearLocalStoreRemains } from '../filters/filterCheckbox';
 import getData from '../getData';
 import { elementDomStorage } from '../render/generateElement';
 import { renderItems } from '../render/items';
 import { DataObject } from '../types';
 import { addEventListnerSpoiler, addEventListnerTemplate, addToBasket, resetButtonListners } from './AddEventListners';
+import { saveToLocalStorage } from './localStorage';
 
 function setEventListners(data: DataObject[]): void {
     addToBasket();
@@ -26,7 +28,8 @@ function generateListners(options: Map<string, string[]>, data: DataObject[]): v
         elementDomStorage.get(key)?.forEach((el) => {
             value.forEach((eventType) => {
                 el.addEventListener(eventType, (e) => {
-                    e.stopImmediatePropagation();
+                    clearLocalStoreRemains();
+                    saveToLocalStorage('search', (el as HTMLInputElement).value);
                     const filtered = applyAll(data);
                     renderItems(filtered);
                 });

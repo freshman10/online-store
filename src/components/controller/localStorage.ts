@@ -2,6 +2,7 @@ import { basketItemsStorage } from '../../constants/constants';
 import { applyAll } from '../filters/applyAllFilters';
 import { setCheckboxes } from '../filters/filterCheckbox';
 import { setPopularFlag } from '../filters/popularFilter';
+import { elementDomStorage } from '../render/generateElement';
 import { DataObject } from '../types';
 import { renderBasket, renderBasketItems, resetCheckboxes } from './AddEventListners';
 
@@ -30,6 +31,7 @@ export function applyLocalStorage(data: DataObject[]): void {
     const basketCount = storage.getItem('basketCount');
     const basketItems = storage.getItem('basketItems');
     const popular = storage.getItem('popular');
+    const search = storage.getItem('search');
     if (basketCount) {
         renderBasket(Number(basketCount));
     }
@@ -47,6 +49,11 @@ export function applyLocalStorage(data: DataObject[]): void {
     if (popular) {
         const flag: boolean = popular === 'true' ? true : false;
         setPopularFlag(flag, data);
+    }
+    if (search) {
+        elementDomStorage.get('input-search')?.forEach((el) => {
+            (el as HTMLInputElement).value = search;
+        });
     }
 }
 

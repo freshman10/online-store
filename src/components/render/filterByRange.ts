@@ -3,6 +3,7 @@ import { createElement } from './generateElement';
 import * as noUiSlider from 'nouislider';
 import { applyAll } from '../filters/applyAllFilters';
 import { renderItems } from './items';
+import { getFromLocalStorage, saveToLocalStorage } from '../controller/localStorage';
 
 function getMinMax(data: DataObject[], field: string): number[] {
     const storage = new Set<number>();
@@ -15,8 +16,10 @@ export function createRangeFilter(
     data: DataObject[],
     field: string,
     label: string,
-    step = 1
+    step = 1,
+    init = false
 ): void {
+    let counter = 0;
     const container: HTMLElement = createElement('div', parentElement, [`${field}-filter`]);
     createElement('h3', container, [`${field}-label`], label);
     const sliderAndInputs: HTMLElement = createElement('div', container, ['slider-input']);
@@ -28,7 +31,7 @@ export function createRangeFilter(
         ['type', 'number'],
     ]) as HTMLInputElement;
     const [min, max] = getMinMax(data, field);
-    noUiSlider.create(sliderContainer, {
+    const Slider = noUiSlider.create(sliderContainer, {
         start: [min, max],
         connect: true,
         range: {
@@ -49,16 +52,28 @@ export function createRangeFilter(
     [inputFrom, inputTo].forEach((el) => {
         el.addEventListener('change', function () {
             sliderContainer.noUiSlider?.set([inputFrom.valueAsNumber, inputTo.valueAsNumber]);
+            saveToLocalStorage(`${field}-input`, `${inputFrom.value}+++${inputTo.value}`);
             const filtered = applyAll(data);
             renderItems(filtered);
         });
     });
     sliderContainer.noUiSlider?.on('update', function (values) {
-        inputFrom.value = values[0] as string;
-        inputTo.value = values[1] as string;
-        const filtered = applyAll(data);
-        renderItems(filtered);
+        if (values[0] != inputFrom.value || values[1] != inputTo.value) {
+            inputFrom.value = values[0] as string;
+            inputTo.value = values[1] as string;
+            if (counter !== 0) {
+                saveToLocalStorage(`${field}-input`, `${inputFrom.value}+++${inputTo.value}`);
+            }
+            const filtered = applyAll(data);
+            renderItems(filtered);
+            counter++;
+        }
     });
+    const localMinMax = getFromLocalStorage(`${field}-input`);
+    if (localMinMax) {
+        const minMaxArray: number[] = localMinMax.split('+++').map((el) => Number(el));
+        Slider.set(minMaxArray);
+    }
 }
 
 export function renderFilterByRange(parentElement: HTMLElement, data: DataObject[]): void {

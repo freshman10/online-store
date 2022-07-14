@@ -1,5 +1,5 @@
 import { resetCheckboxes } from '../controller/AddEventListners';
-import { saveFromMap } from '../controller/localStorage';
+import { removeFromLocalStorage, saveFromMap } from '../controller/localStorage';
 import { elementDomStorage } from '../render/generateElement';
 import { DataObject } from '../types';
 
@@ -48,6 +48,21 @@ export function setCheckboxes(className: string, items: string[]): void {
         input.checked = false;
         if (items.includes(input.value)) {
             input.checked = true;
+        }
+    });
+}
+
+export function clearLocalStoreRemains(): void {
+    ['input-make', 'input-brakes', 'input-color'].forEach((input) => {
+        let flag = false;
+        elementDomStorage.get(input)?.forEach((el) => {
+            const element = el as HTMLInputElement;
+            if (element.checked) {
+                flag = true;
+            }
+        });
+        if (!flag) {
+            removeFromLocalStorage(input);
         }
     });
 }

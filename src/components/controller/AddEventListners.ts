@@ -78,7 +78,6 @@ export function resetButtonListners(target: string, eventType: string, data: Dat
 
 function resetFilters(data: DataObject[]): void {
     resetCheckboxes();
-    resetColors();
     resetPopular();
     resetRangeFilters(data);
     resetSearch();
@@ -98,17 +97,6 @@ export function resetCheckboxes(): void {
     });
 }
 
-function resetColors(): void {
-    elementDomStorage.get('color-item')?.forEach((el) => {
-        if (el.classList.contains('checked')) {
-            el.classList.remove('checked');
-        }
-        if (el.getAttribute('value') === 'ALL') {
-            el.classList.add('checked');
-        }
-    });
-}
-
 function resetPopular(): void {
     elementDomStorage.get('checked-img')?.forEach((el) => el.classList.add('hide'));
 }
@@ -121,6 +109,7 @@ function resetRangeFilters(data: DataObject[]): void {
                 el.remove();
                 elementDomStorage.delete(`${filter}-filter`);
             });
+            removeFromLocalStorage(`${filter}-input`);
         });
         createRangeFilter(parentDiv, data, 'age', 'Production year');
         createRangeFilter(parentDiv, data, 'wheel', 'Wheel size');
