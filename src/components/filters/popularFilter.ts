@@ -1,4 +1,3 @@
-import { saveToLocalStorage } from '../controller/localStorage';
 import { elementDomStorage } from '../render/generateElement';
 import { renderItems } from '../render/items';
 import { DataObject } from '../types';

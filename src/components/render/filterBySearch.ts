@@ -3,7 +3,11 @@ import { sortingTypes, reserButtons } from '../../constants/constants';
 import { getFromLocalStorage } from '../controller/localStorage';
 
 function createSearchInput(parentElement: HTMLElement): void {
-    createElement('input', parentElement, ['input-search'], '', [['type', 'search']]);
+    const searchField = createElement('input', parentElement, ['input-search'], '', [
+        ['type', 'search'],
+        ['placeholder', '...'],
+    ]);
+    searchField.focus();
 }
 
 function createSortingList(parentElement: HTMLElement, items: string[]): void {

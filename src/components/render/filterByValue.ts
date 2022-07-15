@@ -1,13 +1,12 @@
-import { addToDOMStorage, createElement } from './generateElement';
+import { createElement } from './generateElement';
 import { DataObject } from '../types';
-import { setCheckboxes } from '../filters/filterCheckbox';
 
 function createPopularFilter(parentElement: HTMLElement): void {
     const container = createElement('div', parentElement, ['popular-container']);
     createElement('h3', container, ['popular-label'], 'Show popular:');
     const populatCheckbox = createElement('div', container, ['popular-checkbox']);
     createElement('img', populatCheckbox, ['checked-img', 'hide'], '', [
-        ['src', '../../assets/img/tick.png'],
+        ['src', './assets/img/tick.png'],
         ['alt', 'green tick'],
     ]);
 }

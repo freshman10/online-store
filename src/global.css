@@ -34,6 +34,9 @@
     background-size: 40px 40px;
     background-position: center;
 }
+.bin-container:hover {
+    cursor: pointer;
+}
 
 .bin-counter {
     padding-top: 40px;
