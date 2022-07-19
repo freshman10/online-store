@@ -1,5 +1,5 @@
 import { basketItemsStorage } from '../../constants/constants';
-import { DataObject } from './../types';
+import { DataObject } from '../../constants/types';
 import { addToDOMStorage, createElement, elementDomStorage } from './generateElement';
 
 function createCard(data: DataObject): HTMLElement {

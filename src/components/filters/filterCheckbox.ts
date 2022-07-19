@@ -1,7 +1,7 @@
 import { resetCheckboxes } from '../controller/AddEventListners';
 import { removeFromLocalStorage, saveFromMap } from '../controller/localStorage';
 import { elementDomStorage } from '../render/generateElement';
-import { DataObject } from '../types';
+import { DataObject } from '../../constants/types';
 
 export function filterCheckbox(data: DataObject[]): DataObject[] {
     const mapFilters = new Map<string, string[]>();
@@ -33,11 +33,13 @@ function filterDataByMap(map: Map<string, string[]>, data: DataObject[]): DataOb
     return filteredData;
 }
 
-function addToMap<T, P>(map: Map<T, P[]>, key: T, value: P): Map<T, P[]> {
-    if (map.has(key)) {
-        map.get(key)?.push(value);
-    } else {
-        map.set(key, [value]);
+export function addToMap<T, P>(map: Map<T, P[]>, key: T, value: P): Map<T, P[]> {
+    if (map instanceof Map && key && value) {
+        if (map.has(key)) {
+            map.get(key)?.push(value);
+        } else {
+            map.set(key, [value]);
+        }
     }
     return map;
 }

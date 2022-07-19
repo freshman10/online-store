@@ -1,6 +1,6 @@
 import { elementDomStorage } from '../render/generateElement';
 import { renderItems } from '../render/items';
-import { DataObject } from '../types';
+import { DataObject } from '../../constants/types';
 import { applyAll } from './applyAllFilters';
 
 export function popularFilter(data: DataObject[]): DataObject[] {

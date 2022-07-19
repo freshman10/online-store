@@ -1,19 +1,23 @@
 import { basketItemsStorage } from '../../constants/constants';
-import { applyAll } from '../filters/applyAllFilters';
 import { setCheckboxes } from '../filters/filterCheckbox';
 import { setPopularFlag } from '../filters/popularFilter';
 import { elementDomStorage } from '../render/generateElement';
-import { DataObject } from '../types';
-import { renderBasket, renderBasketItems, resetCheckboxes } from './AddEventListners';
+import { DataObject } from '../../constants/types';
+import { renderBasket, renderBasketItems } from './AddEventListners';
 
 export function saveToLocalStorage(key: string, value: string): void {
-    const storage = window.localStorage;
-    storage.setItem(key, value);
+    if(key && value && typeof key === 'string' && typeof value === 'string') {
+        const storage = window.localStorage;
+        storage.setItem(key, value);
+    }
 }
 
 export function getFromLocalStorage(key: string): string {
-    const storage = window.localStorage;
-    return storage.getItem(key) || '';
+    if(key && typeof key === 'string') {
+        const storage = window.localStorage;
+        return storage.getItem(key) || '';
+    }
+    return ''
 }
 
 export function resetLocalStorage(): void {
@@ -22,8 +26,10 @@ export function resetLocalStorage(): void {
 }
 
 export function removeFromLocalStorage(key: string): void {
-    const storage = window.localStorage;
-    storage.removeItem(key);
+    if(key && typeof key === 'string') {
+        const storage = window.localStorage;
+        storage.removeItem(key);
+    }
 }
 
 export function applyLocalStorage(data: DataObject[]): void {
@@ -58,7 +64,11 @@ export function applyLocalStorage(data: DataObject[]): void {
 }
 
 export function saveFromMap(map: Map<string, string[]>): void {
-    map.forEach((value, key) => {
-        saveToLocalStorage(key, value.join('+++'));
-    });
+    if (map instanceof Map) {
+        map.forEach((value, key) => {
+            if (Array.isArray(value) && value.every((el) => typeof el === 'string')) {
+                saveToLocalStorage(key, value.join('+++'));
+            }
+        });
+    }
 }

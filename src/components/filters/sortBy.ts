@@ -1,5 +1,5 @@
 import { elementDomStorage } from '../render/generateElement';
-import { DataObject } from '../types';
+import { DataObject } from '../../constants/types';
 
 export function sortBy(data: DataObject[]): DataObject[] {
     let filteredData = data;

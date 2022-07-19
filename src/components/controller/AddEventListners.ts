@@ -2,7 +2,7 @@ import { basketItemsStorage } from '../../constants/constants';
 import { applyAll } from '../filters/applyAllFilters';
 import { elementDomStorage } from '../render/generateElement';
 import { renderItems } from '../render/items';
-import { DataObject } from '../types';
+import { DataObject } from '../../constants/types';
 import { createRangeFilter } from '../render/filterByRange';
 import { removeFromLocalStorage, resetLocalStorage, saveToLocalStorage } from './localStorage';
 

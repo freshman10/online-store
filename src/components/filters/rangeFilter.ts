@@ -1,5 +1,5 @@
 import { elementDomStorage } from '../render/generateElement';
-import { DataObject } from '../types';
+import { DataObject } from '../../constants/types';
 
 export function rangeFilter(data: DataObject[], target: string): DataObject[] {
     let filteredData = data;

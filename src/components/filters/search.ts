@@ -1,7 +1,6 @@
-import { saveToLocalStorage } from '../controller/localStorage';
 import { elementDomStorage } from '../render/generateElement';
 import { renderItems } from '../render/items';
-import { DataObject } from '../types';
+import { DataObject } from '../../constants/types';
 import { applyAll } from './applyAllFilters';
 
 export function search(data: DataObject[], pattern: string): DataObject[] {

@@ -3,7 +3,7 @@ import { renderFilterByValue } from './filterByValue';
 import { renderFilterByRange } from './filterByRange';
 import { renderFilterBySearch } from './filterBySearch';
 import { renderItems } from './items';
-import { DataObject } from '../types';
+import { DataObject } from '../../constants/types';
 import { applyAll } from '../filters/applyAllFilters';
 import { renderWarning } from './warning';
 import { applyLocalStorage } from '../controller/localStorage';

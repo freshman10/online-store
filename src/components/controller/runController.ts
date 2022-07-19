@@ -3,7 +3,7 @@ import { clearLocalStoreRemains } from '../filters/filterCheckbox';
 import getData from '../getData';
 import { elementDomStorage } from '../render/generateElement';
 import { renderItems } from '../render/items';
-import { DataObject } from '../types';
+import { DataObject } from '../../constants/types';
 import { addEventListnerSpoiler, addEventListnerTemplate, addToBasket, resetButtonListners } from './AddEventListners';
 import { saveToLocalStorage } from './localStorage';
 

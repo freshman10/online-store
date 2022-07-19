@@ -1,5 +1,5 @@
 import { elementDomStorage } from '../render/generateElement';
-import { DataObject } from '../types';
+import { DataObject } from '../../constants/types';
 import { colorFilter } from './colorFilter';
 import { filterCheckbox } from './filterCheckbox';
 import { popularFilter } from './popularFilter';

@@ -1,4 +1,4 @@
-import { DataObject } from '../types';
+import { DataObject } from '../../constants/types';
 import { createElement } from './generateElement';
 import * as noUiSlider from 'nouislider';
 import { applyAll } from '../filters/applyAllFilters';

@@ -1,5 +1,5 @@
 import { createElement } from './generateElement';
-import { DataObject } from '../types';
+import { DataObject } from '../../constants/types';
 
 function createPopularFilter(parentElement: HTMLElement): void {
     const container = createElement('div', parentElement, ['popular-container']);
@@ -26,7 +26,7 @@ function createSpoiler(parentElement: HTMLElement, name: string, data: DataObjec
     createElement('p', headerContainer, ['spoiler-triangle'], '►');
     createElement('h3', headerContainer, ['filter-option'], name);
     const form = createElement('form', spoilerContainer, ['spoiler-form', 'invisible']);
-    const inputs = getSetFromData(fieldName, data);
+    const inputs = getUnique(fieldName, data);
     inputs.forEach((inputText) => {
         const inputContainer = createElement('div', form, ['input-container']);
         const input = createElement('input', inputContainer, ['input', `input-${fieldName}`], '', [
@@ -38,6 +38,6 @@ function createSpoiler(parentElement: HTMLElement, name: string, data: DataObjec
     });
 }
 
-function getSetFromData(fieldName: string, data: DataObject[]): string[] {
+export function getUnique(fieldName: string, data: DataObject[]): string[] {
     return [...new Set(data.map((el: DataObject) => el[fieldName as keyof typeof el] as string))];
 }

@@ -1,0 +1,32 @@
+const { getFromLocalStorage } = require('../components/controller/localStorage');
+
+describe('getFromLocalStorage function testing', () => {
+
+    beforeEach(()=> {
+        window.localStorage.clear();
+    })
+
+    test('should be defined', () => {
+        expect(getFromLocalStorage).toBeDefined();
+    })
+
+    test('should do nothing', () => {
+        expect(getFromLocalStorage()).toBe('');
+    })
+
+    test('should do nothing', () => {
+        expect(getFromLocalStorage(1)).toBe('');
+    })
+
+    test('should get a string', () => {
+        window.localStorage.setItem('1', '1');
+        expect(getFromLocalStorage('1')).toBe('1');
+    })
+
+    test('should get a string', () => {
+        window.localStorage.setItem('2', '2');
+        window.localStorage.setItem('3', '3333');
+        expect(getFromLocalStorage('2')).toBe('2');
+        expect(getFromLocalStorage('3')).toBe('3333');
+    })
+})

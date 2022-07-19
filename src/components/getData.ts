@@ -1,7 +1,7 @@
 import data from '../data.json';
-import { DataObject } from './types';
+import { DataObject } from '../constants/types';
 
-function getData(): DataObject[] {
+export function getData(): DataObject[] {
     return data.data;
 }
 
