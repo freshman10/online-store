@@ -6,7 +6,7 @@ import { DataObject } from '../../constants/types';
 import { createRangeFilter } from '../render/filterByRange';
 import { removeFromLocalStorage, resetLocalStorage, saveToLocalStorage } from './localStorage';
 
-function countItemsInBasket(): number {
+export function countItemsInBasket(): number {
     return basketItemsStorage.length;
 }
 

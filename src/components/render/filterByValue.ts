@@ -39,5 +39,8 @@ function createSpoiler(parentElement: HTMLElement, name: string, data: DataObjec
 }
 
 export function getUnique(fieldName: string, data: DataObject[]): string[] {
-    return [...new Set(data.map((el: DataObject) => el[fieldName as keyof typeof el] as string))];
+    if (fieldName && data && typeof fieldName === 'string' && Array.isArray(data)) {
+        return [...new Set(data.map((el: DataObject) => el[fieldName as keyof typeof el] as string))];
+    }
+    return [];
 }
