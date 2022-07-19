@@ -1,10 +1,31 @@
-import { ADDED_CONTAINER, ADDED_TEXT, ADDED_TO_CART, ATTENTION, BASKET, basketItemsStorage, DESCRIPTION, DIV, H1, H3, IMG, ITEMS_CONTAINER, ITEM_IMG, ITEM_NAME, NO, P, SORRY, SORRY_NO_PRODUCTS, SRC, YES } from '../../constants/constants';
+import {
+    ADDED_CONTAINER,
+    ADDED_TEXT,
+    ADDED_TO_CART,
+    ATTENTION,
+    BASKET,
+    basketItemsStorage,
+    DESCRIPTION,
+    DIV,
+    H1,
+    H3,
+    IMG,
+    ITEMS_CONTAINER,
+    ITEM_CONTAINER,
+    ITEM_IMG,
+    ITEM_NAME,
+    NO,
+    P,
+    SORRY_NO_PRODUCTS,
+    SRC,
+    YES,
+} from '../../constants/constants';
 import { DataObject } from '../../constants/types';
 import { addToDOMStorage, createElement, elementDomStorage } from './generateElement';
 
 function createCard(data: DataObject): HTMLElement {
     const container = document.createElement(DIV);
-    container.classList.add(ITEMS_CONTAINER);
+    container.classList.add(ITEM_CONTAINER);
     addToDOMStorage(container);
     createElement(H3, container, [ITEM_NAME], data.name);
     require(`../../assets/img/${data.img}`);

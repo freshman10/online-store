@@ -1,30 +1,31 @@
 import { createElement } from './generateElement';
 import { DataObject } from '../../constants/types';
+import { ALT, BRAKES, BRAKES_SMALL, CHECKED_IMG, COLOR, COLOR_SMALL, COMPANY, DIV, EMPTY, FILTER, FILTER_BY_VALUE, FILTER_CAPTION, FILTER_VALUE, GREEN_TICK, H2, H3, HIDE, IMG, MAKE, P, POPULAR_CHECKBOX, POPULAR_CONTAINER, POPULAR_LABEL, SHOW_POPULAR, SPOILER, SRC, STRING, TICK_PATH } from '../../constants/constants';
 
 function createPopularFilter(parentElement: HTMLElement): void {
-    const container = createElement('div', parentElement, ['popular-container']);
-    createElement('h3', container, ['popular-label'], 'Show popular:');
-    const populatCheckbox = createElement('div', container, ['popular-checkbox']);
-    createElement('img', populatCheckbox, ['checked-img', 'hide'], '', [
-        ['src', './assets/img/tick.png'],
-        ['alt', 'green tick'],
+    const container = createElement(DIV, parentElement, [POPULAR_CONTAINER]);
+    createElement(H3, container, [POPULAR_LABEL], SHOW_POPULAR);
+    const populatCheckbox = createElement(DIV, container, [POPULAR_CHECKBOX]);
+    createElement(IMG, populatCheckbox, [CHECKED_IMG, HIDE], EMPTY, [
+        [SRC, TICK_PATH],
+        [ALT, GREEN_TICK],
     ]);
 }
 
 export function renderFilterByValue(parentElement: HTMLElement, data: DataObject[]): void {
-    const filterByValue: HTMLElement = createElement('div', parentElement, ['filter-value', 'filter']);
-    createElement('h2', filterByValue, ['filter-caption'], 'Filters by value');
-    createSpoiler(filterByValue, 'Company', data, 'make');
-    createSpoiler(filterByValue, 'Brakes', data, 'brakes');
-    createSpoiler(filterByValue, 'Color', data, 'color');
+    const filterByValue: HTMLElement = createElement(DIV, parentElement, [FILTER_VALUE, FILTER]);
+    createElement(H2, filterByValue, [FILTER_CAPTION], FILTER_BY_VALUE);
+    createSpoiler(filterByValue, COMPANY, data, MAKE);
+    createSpoiler(filterByValue, BRAKES, data, BRAKES_SMALL);
+    createSpoiler(filterByValue, COLOR, data, COLOR_SMALL);
     createPopularFilter(filterByValue);
 }
 
 function createSpoiler(parentElement: HTMLElement, name: string, data: DataObject[], fieldName: string): void {
-    const spoilerContainer = createElement('div', parentElement, ['spoiler']);
-    const headerContainer = createElement('div', spoilerContainer, ['input-header-container']);
-    createElement('p', headerContainer, ['spoiler-triangle'], '►');
-    createElement('h3', headerContainer, ['filter-option'], name);
+    const spoilerContainer = createElement(DIV, parentElement, [SPOILER]);
+    const headerContainer = createElement(DIV, spoilerContainer, ['input-header-container']);
+    createElement(P, headerContainer, ['spoiler-triangle'], '►');
+    createElement(H3, headerContainer, ['filter-option'], name);
     const form = createElement('form', spoilerContainer, ['spoiler-form', 'invisible']);
     const inputs = getUnique(fieldName, data);
     inputs.forEach((inputText) => {
@@ -39,7 +40,7 @@ function createSpoiler(parentElement: HTMLElement, name: string, data: DataObjec
 }
 
 export function getUnique(fieldName: string, data: DataObject[]): string[] {
-    if (fieldName && data && typeof fieldName === 'string' && Array.isArray(data)) {
+    if (fieldName && data && typeof fieldName === STRING && Array.isArray(data)) {
         return [...new Set(data.map((el: DataObject) => el[fieldName as keyof typeof el] as string))];
     }
     return [];
