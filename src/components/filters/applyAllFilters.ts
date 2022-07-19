@@ -6,16 +6,17 @@ import { popularFilter } from './popularFilter';
 import { rangeFilter } from './rangeFilter';
 import { search } from './search';
 import { sortBy } from './sortBy';
+import { AGE, INPUT_SEARCH, ITEMS, ONE, PRICE, WHEEL, ZERO } from '../../constants/constants';
 
 export function applyAll(data: DataObject[]): DataObject[] {
-    const element = elementDomStorage.get('input-search')?.slice(0, 1)[0] as HTMLInputElement;
+    const element = elementDomStorage.get(INPUT_SEARCH)?.slice(ZERO, ONE)[ZERO] as HTMLInputElement;
     if (element) {
         const pattern = element.value;
         let filteredData = search(data, pattern);
         filteredData = colorFilter(filteredData);
         filteredData = popularFilter(filteredData);
         filteredData = filterCheckbox(filteredData);
-        ['age', 'wheel', 'price', 'items'].forEach((el) => {
+        [AGE, WHEEL, PRICE, ITEMS].forEach((el) => {
             filteredData = rangeFilter(filteredData, el);
         });
         filteredData = sortBy(filteredData);

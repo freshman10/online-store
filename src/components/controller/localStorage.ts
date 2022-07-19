@@ -1,4 +1,18 @@
-import { basketItemsStorage } from '../../constants/constants';
+import {
+    basketItemsStorage,
+    BASKET_COUNT,
+    BASKET_ITEMS,
+    EMPTY,
+    INPUT_BRAKES,
+    INPUT_COLOR,
+    INPUT_MAKE,
+    INPUT_SEARCH,
+    POPULAR,
+    SEARCH,
+    SEPARATOR,
+    STRING,
+    TRUE,
+} from '../../constants/constants';
 import { setCheckboxes } from '../filters/filterCheckbox';
 import { setPopularFlag } from '../filters/popularFilter';
 import { elementDomStorage } from '../render/generateElement';
@@ -6,18 +20,18 @@ import { DataObject } from '../../constants/types';
 import { renderBasket, renderBasketItems } from './AddEventListners';
 
 export function saveToLocalStorage(key: string, value: string): void {
-    if (key && value && typeof key === 'string' && typeof value === 'string') {
+    if (key && value && typeof key === STRING && typeof value === STRING) {
         const storage = window.localStorage;
         storage.setItem(key, value);
     }
 }
 
 export function getFromLocalStorage(key: string): string {
-    if (key && typeof key === 'string') {
+    if (key && typeof key === STRING) {
         const storage = window.localStorage;
-        return storage.getItem(key) || '';
+        return storage.getItem(key) || EMPTY;
     }
-    return '';
+    return EMPTY;
 }
 
 export function resetLocalStorage(): void {
@@ -26,7 +40,7 @@ export function resetLocalStorage(): void {
 }
 
 export function removeFromLocalStorage(key: string): void {
-    if (key && typeof key === 'string') {
+    if (key && typeof key === STRING) {
         const storage = window.localStorage;
         storage.removeItem(key);
     }
@@ -34,30 +48,30 @@ export function removeFromLocalStorage(key: string): void {
 
 export function applyLocalStorage(data: DataObject[]): void {
     const storage = window.localStorage;
-    const basketCount = storage.getItem('basketCount');
-    const basketItems = storage.getItem('basketItems');
-    const popular = storage.getItem('popular');
-    const search = storage.getItem('search');
+    const basketCount = storage.getItem(BASKET_COUNT);
+    const basketItems = storage.getItem(BASKET_ITEMS);
+    const popular = storage.getItem(POPULAR);
+    const search = storage.getItem(SEARCH);
     if (basketCount) {
         renderBasket(Number(basketCount));
     }
     if (basketItems) {
-        const storedStorage = basketItems.split('+++');
+        const storedStorage = basketItems.split(SEPARATOR);
         basketItemsStorage.push(...storedStorage);
         renderBasketItems();
     }
-    ['input-make', 'input-brakes', 'input-color'].forEach((el) => {
+    [INPUT_MAKE, INPUT_BRAKES, INPUT_COLOR].forEach((el) => {
         const items = storage.getItem(el);
         if (items) {
-            setCheckboxes(el, items?.split('+++'));
+            setCheckboxes(el, items?.split(SEPARATOR));
         }
     });
     if (popular) {
-        const flag: boolean = popular === 'true' ? true : false;
+        const flag: boolean = popular === TRUE ? true : false;
         setPopularFlag(flag, data);
     }
     if (search) {
-        elementDomStorage.get('input-search')?.forEach((el) => {
+        elementDomStorage.get(INPUT_SEARCH)?.forEach((el) => {
             (el as HTMLInputElement).value = search;
         });
     }
@@ -66,8 +80,8 @@ export function applyLocalStorage(data: DataObject[]): void {
 export function saveFromMap(map: Map<string, string[]>): void {
     if (map instanceof Map) {
         map.forEach((value, key) => {
-            if (Array.isArray(value) && value.every((el) => typeof el === 'string')) {
-                saveToLocalStorage(key, value.join('+++'));
+            if (Array.isArray(value) && value.every((el) => typeof el === STRING)) {
+                saveToLocalStorage(key, value.join(SEPARATOR));
             }
         });
     }

@@ -1,4 +1,48 @@
-import { basketItemsStorage } from '../../constants/constants';
+import {
+    ADDED_CONTAINER,
+    AGE,
+    BACKGROUND_LAYER,
+    BASKET,
+    basketItemsStorage,
+    BASKET_COUNT,
+    BASKET_ITEMS,
+    BIN_COUNTER,
+    CHECKED_IMG,
+    CLICK,
+    EMPTY,
+    FALSE,
+    FILTER,
+    FILTER_RANGE,
+    HIDE,
+    INPUT,
+    INPUT_BRAKES,
+    INPUT_COLOR,
+    INPUT_MAKE,
+    INPUT_SEARCH,
+    ITEMS,
+    ITEMS_CONTAINER,
+    ITEM_CONTAINER,
+    ITEM_NAME,
+    ONE,
+    POPULAR,
+    POPULAR_CHECKBOX,
+    PRICE,
+    PRODUCTION_YEAR,
+    QUANTITY,
+    RESET_FILTERS,
+    RESET_SETTINGS,
+    SEARCH,
+    SEPARATOR,
+    SORT,
+    SORTING_DROPLIST,
+    SPOILER,
+    TRUE,
+    TWENTY,
+    WARNING_CONTAINER,
+    WHEEL,
+    WHEEL_SIZE,
+    ZERO,
+} from '../../constants/constants';
 import { applyAll } from '../filters/applyAllFilters';
 import { elementDomStorage } from '../render/generateElement';
 import { renderItems } from '../render/items';
@@ -11,49 +55,49 @@ export function countItemsInBasket(): number {
 }
 
 export function renderBasket(items: number): void {
-    elementDomStorage.get('bin-counter')?.forEach((el) => (el.textContent = items.toString()));
-    saveToLocalStorage('basketCount', items.toString());
+    elementDomStorage.get(BIN_COUNTER)?.forEach((el) => (el.textContent = items.toString()));
+    saveToLocalStorage(BASKET_COUNT, items.toString());
 }
 
 export function renderBasketItems(): void {
-    elementDomStorage.get('item-container')?.forEach((el) => {
-        if (basketItemsStorage.includes(el.querySelector('.item-name')?.textContent as string)) {
-            el.querySelector('.added-container')?.classList.remove('basket');
+    elementDomStorage.get(ITEM_CONTAINER)?.forEach((el) => {
+        if (basketItemsStorage.includes(el.querySelector(`.${ITEM_NAME}`)?.textContent as string)) {
+            el.querySelector(`.${ADDED_CONTAINER}`)?.classList.remove(BASKET);
         }
     });
 }
 
 function showAttention(): void {
-    elementDomStorage.get('warning-container')?.forEach((el) => {
-        el.classList.remove('hide');
+    elementDomStorage.get(WARNING_CONTAINER)?.forEach((el) => {
+        el.classList.remove(HIDE);
     });
-    elementDomStorage.get('background-layer')?.forEach((el) => {
-        el.classList.remove('hide');
+    elementDomStorage.get(BACKGROUND_LAYER)?.forEach((el) => {
+        el.classList.remove(HIDE);
     });
 }
 
 function saveToBasketItemsStorage(element: Element): void {
-    const nameOfProduct: string = element.querySelector('.item-name')?.textContent || '';
-    if (nameOfProduct !== '' && basketItemsStorage.includes(nameOfProduct)) {
+    const nameOfProduct: string = element.querySelector(`.${ITEM_NAME}`)?.textContent || EMPTY;
+    if (nameOfProduct !== EMPTY && basketItemsStorage.includes(nameOfProduct)) {
         const index = basketItemsStorage.indexOf(nameOfProduct);
-        basketItemsStorage.splice(index, 1);
+        basketItemsStorage.splice(index, ONE);
     } else {
-        if (basketItemsStorage.length === 20) {
+        if (basketItemsStorage.length === TWENTY) {
             showAttention();
-            element.querySelector('.added-container')?.classList.toggle('basket');
+            element.querySelector(`.${ADDED_CONTAINER}`)?.classList.toggle(BASKET);
         } else {
             basketItemsStorage.push(nameOfProduct);
         }
     }
-    saveToLocalStorage('basketItems', basketItemsStorage.join('+++'));
+    saveToLocalStorage(BASKET_ITEMS, basketItemsStorage.join(SEPARATOR));
 }
 
 export function addToBasket(): void {
-    elementDomStorage.get('items-container')?.forEach((container) => {
-        container.addEventListener('click', (e) => {
-            const clickedElement = (e.target as Element).closest('.item-container') as Element;
+    elementDomStorage.get(ITEMS_CONTAINER)?.forEach((container) => {
+        container.addEventListener(CLICK, (e) => {
+            const clickedElement = (e.target as Element).closest(`.${ITEM_CONTAINER}`) as Element;
             if (clickedElement) {
-                clickedElement.querySelector('.added-container')?.classList.toggle('basket');
+                clickedElement.querySelector(`.${ADDED_CONTAINER}`)?.classList.toggle(BASKET);
                 saveToBasketItemsStorage(clickedElement);
                 const items = countItemsInBasket();
                 renderBasket(items);
@@ -65,9 +109,9 @@ export function addToBasket(): void {
 export function resetButtonListners(target: string, eventType: string, data: DataObject[]): void {
     elementDomStorage.get(target)?.forEach((el) =>
         el.addEventListener(eventType, () => {
-            if (target === 'reset-filters') {
+            if (target === RESET_FILTERS) {
                 resetFilters(data);
-            } else if (target === 'reset-setting') {
+            } else if (target === RESET_SETTINGS) {
                 resetSettings(data);
             }
             const filteredData = applyAll(data);
@@ -91,50 +135,50 @@ function resetSettings(data: DataObject[]): void {
 }
 
 function resetBasketItemStorage(): void {
-    basketItemsStorage.splice(0, basketItemsStorage.length);
-    removeFromLocalStorage('basketItems');
+    basketItemsStorage.splice(ZERO, basketItemsStorage.length);
+    removeFromLocalStorage(BASKET_ITEMS);
 }
 
 export function resetCheckboxes(): void {
-    elementDomStorage.get('input')?.forEach((el) => {
+    elementDomStorage.get(INPUT)?.forEach((el) => {
         (el as HTMLInputElement).checked = false;
     });
-    ['input-make', 'input-brakes', 'input-color'].forEach((el) => {
+    [INPUT_MAKE, INPUT_BRAKES, INPUT_COLOR].forEach((el) => {
         removeFromLocalStorage(el);
     });
 }
 
 function resetPopular(): void {
-    elementDomStorage.get('checked-img')?.forEach((el) => el.classList.add('hide'));
-    removeFromLocalStorage('popular');
+    elementDomStorage.get(CHECKED_IMG)?.forEach((el) => el.classList.add(HIDE));
+    removeFromLocalStorage(POPULAR);
 }
 
 function resetRangeFilters(data: DataObject[]): void {
-    const parentDiv = elementDomStorage.get('filter-range')?.slice(0, 1)[0] as HTMLElement;
+    const parentDiv = elementDomStorage.get(FILTER_RANGE)?.slice(ZERO, ONE)[ZERO] as HTMLElement;
     if (parentDiv) {
-        ['age', 'wheel', 'price', 'items'].forEach((filter) => {
-            elementDomStorage.get(`${filter}-filter`)?.forEach((el) => {
+        [AGE, WHEEL, PRICE, ITEMS].forEach((filter) => {
+            elementDomStorage.get(`${filter}-${FILTER}`)?.forEach((el) => {
                 el.remove();
-                elementDomStorage.delete(`${filter}-filter`);
+                elementDomStorage.delete(`${filter}-${FILTER}`);
             });
-            removeFromLocalStorage(`${filter}-input`);
+            removeFromLocalStorage(`${filter}-${INPUT}`);
         });
-        createRangeFilter(parentDiv, data, 'age', 'Production year');
-        createRangeFilter(parentDiv, data, 'wheel', 'Wheel size');
-        createRangeFilter(parentDiv, data, 'price', 'Price');
-        createRangeFilter(parentDiv, data, 'items', 'Quantity');
+        createRangeFilter(parentDiv, data, AGE, PRODUCTION_YEAR);
+        createRangeFilter(parentDiv, data, WHEEL, WHEEL_SIZE);
+        createRangeFilter(parentDiv, data, PRICE, PRICE);
+        createRangeFilter(parentDiv, data, ITEMS, QUANTITY);
     }
 }
 
 function resetSearch(): void {
-    elementDomStorage.get('input-search')?.forEach((el) => ((el as HTMLInputElement).value = ''));
-    removeFromLocalStorage('search');
+    elementDomStorage.get(INPUT_SEARCH)?.forEach((el) => ((el as HTMLInputElement).value = EMPTY));
+    removeFromLocalStorage(SEARCH);
 }
 
 function resetSorting(): void {
-    elementDomStorage.get('sorting-droplist')?.forEach((el) => ((el as HTMLSelectElement).selectedIndex = 0));
-    basketItemsStorage.splice(0, basketItemsStorage.length);
-    removeFromLocalStorage('sort');
+    elementDomStorage.get(SORTING_DROPLIST)?.forEach((el) => ((el as HTMLSelectElement).selectedIndex = ZERO));
+    basketItemsStorage.splice(ZERO, basketItemsStorage.length);
+    removeFromLocalStorage(SORT);
     const items = countItemsInBasket();
     renderBasket(items);
 }
@@ -144,10 +188,10 @@ export function addEventListnerSpoiler(elementClass: string, eventType: string, 
         element.addEventListener(eventType, () => {
             targets.forEach((target) => {
                 element
-                    .closest('.spoiler')
-                    ?.querySelectorAll(`.${target[0]}`)
+                    .closest(`.${SPOILER}`)
+                    ?.querySelectorAll(`.${target[ZERO]}`)
                     .forEach((el) => {
-                        el.classList.toggle(target[1]);
+                        el.classList.toggle(target[ONE]);
                     });
             });
         });
@@ -163,13 +207,13 @@ export function addEventListnerTemplate(
     elementDomStorage.get(elementClass)?.forEach((element) => {
         element.addEventListener(eventType, () => {
             targets.forEach((target) => {
-                element?.querySelectorAll(`.${target[0]}`).forEach((el) => {
-                    el.classList.toggle(target[1]);
-                    if (elementClass === 'popular-checkbox') {
-                        if (el.classList.contains('hide')) {
-                            saveToLocalStorage('popular', 'false');
+                element?.querySelectorAll(`.${target[ZERO]}`).forEach((el) => {
+                    el.classList.toggle(target[ONE]);
+                    if (elementClass === POPULAR_CHECKBOX) {
+                        if (el.classList.contains(HIDE)) {
+                            saveToLocalStorage(POPULAR, FALSE);
                         } else {
-                            saveToLocalStorage('popular', 'true');
+                            saveToLocalStorage(POPULAR, TRUE);
                         }
                     }
                 });

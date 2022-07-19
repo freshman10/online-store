@@ -2,12 +2,13 @@ import { resetCheckboxes } from '../controller/AddEventListners';
 import { removeFromLocalStorage, saveFromMap } from '../controller/localStorage';
 import { elementDomStorage } from '../render/generateElement';
 import { DataObject } from '../../constants/types';
+import { DASH, INPUT, INPUT_BRAKES, INPUT_COLOR, INPUT_MAKE, MINUS_ONE, ONE, ZERO } from '../../constants/constants';
 
 export function filterCheckbox(data: DataObject[]): DataObject[] {
     const mapFilters = new Map<string, string[]>();
-    elementDomStorage.get('input')?.forEach((el) => {
+    elementDomStorage.get(INPUT)?.forEach((el) => {
         const input = el as HTMLInputElement;
-        const inputClass = [...input.classList].slice(-1)[0];
+        const inputClass = [...input.classList].slice(MINUS_ONE)[ZERO];
         if (input.checked === true) {
             addToMap(mapFilters, inputClass, input.value);
         }
@@ -19,14 +20,14 @@ export function filterCheckbox(data: DataObject[]): DataObject[] {
 function filterDataByMap(map: Map<string, string[]>, data: DataObject[]): DataObject[] {
     let filteredData: DataObject[] = data;
     map.forEach((value, key) => {
-        const field = key.split('-')[1];
+        const field = key.split(DASH)[ONE];
         const tmpData: DataObject[] = [];
         value.forEach((v) => {
             tmpData.push(...data.filter((el) => el[field as keyof typeof el] === v));
         });
         filteredData = filteredData.filter((el) => tmpData.includes(el));
     });
-    if (map.size === 0) {
+    if (map.size === ZERO) {
         resetCheckboxes();
         return data;
     }
@@ -55,7 +56,7 @@ export function setCheckboxes(className: string, items: string[]): void {
 }
 
 export function clearLocalStoreRemains(): void {
-    ['input-make', 'input-brakes', 'input-color'].forEach((input) => {
+    [INPUT_MAKE, INPUT_BRAKES, INPUT_COLOR].forEach((input) => {
         let flag = false;
         elementDomStorage.get(input)?.forEach((el) => {
             const element = el as HTMLInputElement;
