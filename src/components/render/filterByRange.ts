@@ -4,6 +4,39 @@ import * as noUiSlider from 'nouislider';
 import { applyAll } from '../filters/applyAllFilters';
 import { renderItems } from './items';
 import { getFromLocalStorage, saveToLocalStorage } from '../controller/localStorage';
+import {
+    AGE,
+    CHANGE,
+    COMMA_SLASH,
+    DIV,
+    DRAG,
+    EMPTY,
+    FILTER,
+    FILTER_BY_RANGE,
+    FILTER_CAPTION,
+    FILTER_RANGE,
+    FROM,
+    H2,
+    H3,
+    INPUT,
+    ITEMS,
+    LABEL,
+    NUMBER,
+    ONE,
+    PRICE,
+    PRICE_BIG,
+    PRODUCTION_YEAR,
+    QUANTITY,
+    SEPARATOR,
+    SLIDER,
+    SLIDER_INPUT,
+    TO,
+    TYPE,
+    UPDATE,
+    WHEEL,
+    WHEEL_SIZE,
+    ZERO,
+} from '../../constants/constants';
 
 function getMinMax(data: DataObject[], field: string): number[] {
     const storage = new Set<number>();
@@ -16,18 +49,18 @@ export function createRangeFilter(
     data: DataObject[],
     field: string,
     label: string,
-    step = 1
+    step = ONE
 ): void {
-    let counter = 0;
-    const container: HTMLElement = createElement('div', parentElement, [`${field}-filter`]);
-    createElement('h3', container, [`${field}-label`], label);
-    const sliderAndInputs: HTMLElement = createElement('div', container, ['slider-input']);
-    const inputFrom = createElement('input', sliderAndInputs, [`${field}-input`, 'from', 'input'], '', [
-        ['type', 'number'],
+    let counter = ZERO;
+    const container: HTMLElement = createElement(DIV, parentElement, [`${field}-${FILTER}`]);
+    createElement(H3, container, [`${field}-${LABEL}`], label);
+    const sliderAndInputs: HTMLElement = createElement(DIV, container, [SLIDER_INPUT]);
+    const inputFrom = createElement(INPUT, sliderAndInputs, [`${field}-${INPUT}`, FROM, INPUT], EMPTY, [
+        [TYPE, NUMBER],
     ]) as HTMLInputElement;
-    const sliderContainer: noUiSlider.target = createElement('div', sliderAndInputs, ['slider']);
-    const inputTo = createElement('input', sliderAndInputs, [`${field}-input`, 'to', 'input'], '', [
-        ['type', 'number'],
+    const sliderContainer: noUiSlider.target = createElement(DIV, sliderAndInputs, [SLIDER]);
+    const inputTo = createElement(INPUT, sliderAndInputs, [`${field}-${INPUT}`, TO, INPUT], EMPTY, [
+        [TYPE, NUMBER],
     ]) as HTMLInputElement;
     const [min, max] = getMinMax(data, field);
     const Slider = noUiSlider.create(sliderContainer, {
@@ -37,49 +70,49 @@ export function createRangeFilter(
             min: min,
             max: max,
         },
-        behaviour: 'drag',
+        behaviour: DRAG,
         step: step,
         format: {
             to: function (value) {
                 return value;
             },
             from: function (value) {
-                return Number(value.replace(',-', ''));
+                return Number(value.replace(COMMA_SLASH, EMPTY));
             },
         },
     });
     [inputFrom, inputTo].forEach((el) => {
-        el.addEventListener('change', function () {
+        el.addEventListener(CHANGE, function () {
             sliderContainer.noUiSlider?.set([inputFrom.valueAsNumber, inputTo.valueAsNumber]);
-            saveToLocalStorage(`${field}-input`, `${inputFrom.value}+++${inputTo.value}`);
+            saveToLocalStorage(`${field}-${INPUT}`, `${inputFrom.value}${SEPARATOR}${inputTo.value}`);
             const filtered = applyAll(data);
             renderItems(filtered);
         });
     });
-    sliderContainer.noUiSlider?.on('update', function (values) {
-        if (values[0] != inputFrom.value || values[1] != inputTo.value) {
-            inputFrom.value = values[0] as string;
-            inputTo.value = values[1] as string;
-            if (counter !== 0) {
-                saveToLocalStorage(`${field}-input`, `${inputFrom.value}+++${inputTo.value}`);
+    sliderContainer.noUiSlider?.on(UPDATE, function (values) {
+        if (values[ZERO] != inputFrom.value || values[ONE] != inputTo.value) {
+            inputFrom.value = values[ZERO] as string;
+            inputTo.value = values[ONE] as string;
+            if (counter !== ZERO) {
+                saveToLocalStorage(`${field}-${INPUT}`, `${inputFrom.value}${SEPARATOR}${inputTo.value}`);
             }
             const filtered = applyAll(data);
             renderItems(filtered);
             counter++;
         }
     });
-    const localMinMax = getFromLocalStorage(`${field}-input`);
+    const localMinMax = getFromLocalStorage(`${field}-${INPUT}`);
     if (localMinMax) {
-        const minMaxArray: number[] = localMinMax.split('+++').map((el) => Number(el));
+        const minMaxArray: number[] = localMinMax.split(SEPARATOR).map((el) => Number(el));
         Slider.set(minMaxArray);
     }
 }
 
 export function renderFilterByRange(parentElement: HTMLElement, data: DataObject[]): void {
-    const filterByRange: HTMLElement = createElement('div', parentElement, ['filter-range', 'filter']);
-    createElement('h2', filterByRange, ['filter-caption'], 'Filters by range');
-    createRangeFilter(filterByRange, data, 'age', 'Production year');
-    createRangeFilter(filterByRange, data, 'wheel', 'Wheel size');
-    createRangeFilter(filterByRange, data, 'price', 'Price');
-    createRangeFilter(filterByRange, data, 'items', 'Quantity');
+    const filterByRange: HTMLElement = createElement(DIV, parentElement, [FILTER_RANGE, FILTER]);
+    createElement(H2, filterByRange, [FILTER_CAPTION], FILTER_BY_RANGE);
+    createRangeFilter(filterByRange, data, AGE, PRODUCTION_YEAR);
+    createRangeFilter(filterByRange, data, WHEEL, WHEEL_SIZE);
+    createRangeFilter(filterByRange, data, PRICE, PRICE_BIG);
+    createRangeFilter(filterByRange, data, ITEMS, QUANTITY);
 }

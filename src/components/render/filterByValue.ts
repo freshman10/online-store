@@ -1,6 +1,51 @@
 import { createElement } from './generateElement';
 import { DataObject } from '../../constants/types';
-import { ALT, BRAKES, BRAKES_SMALL, CHECKED_IMG, COLOR, COLOR_SMALL, COMPANY, DIV, EMPTY, FILTER, FILTER_BY_VALUE, FILTER_CAPTION, FILTER_VALUE, GREEN_TICK, H2, H3, HIDE, IMG, MAKE, P, POPULAR_CHECKBOX, POPULAR_CONTAINER, POPULAR_LABEL, SHOW_POPULAR, SPOILER, SRC, STRING, TICK_PATH } from '../../constants/constants';
+import {
+    ALT,
+    BRAKES,
+    BRAKES_SMALL,
+    CHECKBOX,
+    CHECKED_IMG,
+    COLOR,
+    COLOR_SMALL,
+    COMPANY,
+    DIV,
+    EMPTY,
+    FILTER,
+    FILTER_BY_VALUE,
+    FILTER_CAPTION,
+    FILTER_OPTION,
+    FILTER_VALUE,
+    FOR,
+    FORM,
+    GREEN_TICK,
+    H2,
+    H3,
+    HIDE,
+    ID,
+    IMG,
+    INPUT,
+    INPUT_CONTAINER,
+    INPUT_HEADER_CONTAINER,
+    INPUT_LABEL,
+    INVISIBLE,
+    LABEL,
+    MAKE,
+    P,
+    POPULAR_CHECKBOX,
+    POPULAR_CONTAINER,
+    POPULAR_LABEL,
+    SHOW_POPULAR,
+    SPOILER,
+    SPOILER_FORM,
+    SPOILER_TRIANGLE,
+    SRC,
+    STRING,
+    TICK_PATH,
+    TRIANGLE_RIGHT,
+    TYPE,
+    VALUE,
+} from '../../constants/constants';
 
 function createPopularFilter(parentElement: HTMLElement): void {
     const container = createElement(DIV, parentElement, [POPULAR_CONTAINER]);
@@ -23,19 +68,19 @@ export function renderFilterByValue(parentElement: HTMLElement, data: DataObject
 
 function createSpoiler(parentElement: HTMLElement, name: string, data: DataObject[], fieldName: string): void {
     const spoilerContainer = createElement(DIV, parentElement, [SPOILER]);
-    const headerContainer = createElement(DIV, spoilerContainer, ['input-header-container']);
-    createElement(P, headerContainer, ['spoiler-triangle'], '►');
-    createElement(H3, headerContainer, ['filter-option'], name);
-    const form = createElement('form', spoilerContainer, ['spoiler-form', 'invisible']);
+    const headerContainer = createElement(DIV, spoilerContainer, [INPUT_HEADER_CONTAINER]);
+    createElement(P, headerContainer, [SPOILER_TRIANGLE], TRIANGLE_RIGHT);
+    createElement(H3, headerContainer, [FILTER_OPTION], name);
+    const form = createElement(FORM, spoilerContainer, [SPOILER_FORM, INVISIBLE]);
     const inputs = getUnique(fieldName, data);
     inputs.forEach((inputText) => {
-        const inputContainer = createElement('div', form, ['input-container']);
-        createElement('input', inputContainer, ['input', `input-${fieldName}`], '', [
-            ['value', inputText],
-            ['type', 'checkbox'],
-            ['id', `${fieldName}-${inputText}`],
+        const inputContainer = createElement(DIV, form, [INPUT_CONTAINER]);
+        createElement(INPUT, inputContainer, [INPUT, `${INPUT}-${fieldName}`], EMPTY, [
+            [VALUE, inputText],
+            [TYPE, CHECKBOX],
+            [ID, `${fieldName}-${inputText}`],
         ]);
-        createElement('label', inputContainer, ['input-label'], inputText, [['for', `${fieldName}-${inputText}`]]);
+        createElement(LABEL, inputContainer, [INPUT_LABEL], inputText, [[FOR, `${fieldName}-${inputText}`]]);
     });
 }
 
