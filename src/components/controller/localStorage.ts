@@ -6,18 +6,18 @@ import { DataObject } from '../../constants/types';
 import { renderBasket, renderBasketItems } from './AddEventListners';
 
 export function saveToLocalStorage(key: string, value: string): void {
-    if(key && value && typeof key === 'string' && typeof value === 'string') {
+    if (key && value && typeof key === 'string' && typeof value === 'string') {
         const storage = window.localStorage;
         storage.setItem(key, value);
     }
 }
 
 export function getFromLocalStorage(key: string): string {
-    if(key && typeof key === 'string') {
+    if (key && typeof key === 'string') {
         const storage = window.localStorage;
         return storage.getItem(key) || '';
     }
-    return ''
+    return '';
 }
 
 export function resetLocalStorage(): void {
@@ -26,7 +26,7 @@ export function resetLocalStorage(): void {
 }
 
 export function removeFromLocalStorage(key: string): void {
-    if(key && typeof key === 'string') {
+    if (key && typeof key === 'string') {
         const storage = window.localStorage;
         storage.removeItem(key);
     }

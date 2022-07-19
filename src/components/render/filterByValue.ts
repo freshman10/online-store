@@ -29,7 +29,7 @@ function createSpoiler(parentElement: HTMLElement, name: string, data: DataObjec
     const inputs = getUnique(fieldName, data);
     inputs.forEach((inputText) => {
         const inputContainer = createElement('div', form, ['input-container']);
-        const input = createElement('input', inputContainer, ['input', `input-${fieldName}`], '', [
+        createElement('input', inputContainer, ['input', `input-${fieldName}`], '', [
             ['value', inputText],
             ['type', 'checkbox'],
             ['id', `${fieldName}-${inputText}`],

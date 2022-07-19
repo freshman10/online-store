@@ -16,8 +16,7 @@ export function createRangeFilter(
     data: DataObject[],
     field: string,
     label: string,
-    step = 1,
-    init = false
+    step = 1
 ): void {
     let counter = 0;
     const container: HTMLElement = createElement('div', parentElement, [`${field}-filter`]);

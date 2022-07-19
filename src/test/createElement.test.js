@@ -1,5 +1,5 @@
 const { container } = require('webpack');
-const { createElement, elementDomStorage } = require('../components/render/generateElement');
+const { createElement } = require('../components/render/generateElement');
 
 describe('createElement function testing:', () => {
     let result;

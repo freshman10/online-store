@@ -9,6 +9,18 @@ export const sortingTypes: string[] = [
 
 export const reserButtons: string[] = ['filters', 'setting'];
 export const basketItemsStorage: string[] = [];
+export const DIV = 'div';
+export const P = 'p';
+export const BUTTON = 'button';
+export const CLICK = 'click';
+export const WARNING_CONTAINER = 'warning-container';
+export const WARNING_MESSAGE = 'warning-message';
+export const WARNING_BUTTON = 'warning-button';
+export const RESET_BUTTON = 'reset-button';
+export const HIDE = 'hide';
+export const SORRY = 'Sorry. All available slots are exhausted.';
+export const NO_PROBLEM = 'No problem. Got it.';
+export const BACKGROUND_LAYER = 'background-layer';
 export const selfCheck = `Total score 220/200 points.
 
 Если вы нашли не соответствие требованиям, то не стесняйтесь писать в дискорд. Исправлю, мне не сложно :)

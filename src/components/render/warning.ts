@@ -1,29 +1,43 @@
+import {
+    BACKGROUND_LAYER,
+    BUTTON,
+    CLICK,
+    DIV,
+    HIDE,
+    NO_PROBLEM,
+    P,
+    RESET_BUTTON,
+    SORRY,
+    WARNING_BUTTON,
+    WARNING_CONTAINER,
+    WARNING_MESSAGE,
+} from '../../constants/constants';
 import { createElement, elementDomStorage } from './generateElement';
 
 export function renderWarning(): void {
-    const warningContainer = createElement('div', document.body, ['warning-container', 'hide']);
-    createElement('p', warningContainer, ['warning-message'], 'Sorry. All available slots are exhausted.');
-    createElement('button', warningContainer, ['warning-button', 'reset-button'], 'No problem. Got it.');
-    createElement('div', document.body, ['background-layer', 'hide']);
+    const warningContainer = createElement(DIV, document.body, [WARNING_CONTAINER, HIDE]);
+    createElement(P, warningContainer, [WARNING_MESSAGE], SORRY);
+    createElement(BUTTON, warningContainer, [WARNING_BUTTON, RESET_BUTTON], NO_PROBLEM);
+    createElement(DIV, document.body, [BACKGROUND_LAYER, HIDE]);
     addEventListenerWarning();
 }
 
 function addEventListenerWarning() {
-    elementDomStorage.get('background-layer')?.forEach((el) => {
+    elementDomStorage.get(BACKGROUND_LAYER)?.forEach((el) => {
         hideWarning(el);
     });
-    elementDomStorage.get('warning-button')?.forEach((el) => {
+    elementDomStorage.get(WARNING_BUTTON)?.forEach((el) => {
         hideWarning(el);
     });
 }
 
 function hideWarning(element: HTMLElement): void {
-    element.addEventListener('click', () => {
-        elementDomStorage.get('warning-container')?.forEach((el) => {
-            el.classList.add('hide');
+    element.addEventListener(CLICK, () => {
+        elementDomStorage.get(WARNING_CONTAINER)?.forEach((el) => {
+            el.classList.add(HIDE);
         });
-        elementDomStorage.get('background-layer')?.forEach((el) => {
-            el.classList.add('hide');
+        elementDomStorage.get(BACKGROUND_LAYER)?.forEach((el) => {
+            el.classList.add(HIDE);
         });
     });
 }

@@ -27,7 +27,7 @@ function generateListners(options: Map<string, string[]>, data: DataObject[]): v
     options.forEach((value, key) => {
         elementDomStorage.get(key)?.forEach((el) => {
             value.forEach((eventType) => {
-                el.addEventListener(eventType, (e) => {
+                el.addEventListener(eventType, () => {
                     if (key === 'input-search') {
                         saveToLocalStorage('search', (el as HTMLInputElement).value);
                     }
