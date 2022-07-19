@@ -1,32 +1,32 @@
-import { basketItemsStorage } from '../../constants/constants';
+import { ADDED_CONTAINER, ADDED_TEXT, ADDED_TO_CART, ATTENTION, BASKET, basketItemsStorage, DESCRIPTION, DIV, H1, H3, IMG, ITEMS_CONTAINER, ITEM_IMG, ITEM_NAME, NO, P, SORRY, SORRY_NO_PRODUCTS, SRC, YES } from '../../constants/constants';
 import { DataObject } from '../../constants/types';
 import { addToDOMStorage, createElement, elementDomStorage } from './generateElement';
 
 function createCard(data: DataObject): HTMLElement {
-    const container = document.createElement('div');
-    container.classList.add('item-container');
+    const container = document.createElement(DIV);
+    container.classList.add(ITEMS_CONTAINER);
     addToDOMStorage(container);
-    createElement('h3', container, ['item-name'], data.name);
+    createElement(H3, container, [ITEM_NAME], data.name);
     require(`../../assets/img/${data.img}`);
-    createElement('img', container, ['item-img'], '', [['src', `./assets/img/${data.img}`]]);
-    createElement('p', container, ['description'], `Quantity: ${data.items}`);
-    createElement('p', container, ['description'], `Production year: ${data.age}`);
-    createElement('p', container, ['description'], `Company: ${data.make}`);
-    createElement('p', container, ['description'], `Color: ${data.color}`);
-    createElement('p', container, ['description'], `Wheel: ${data.wheel}`);
-    createElement('p', container, ['description'], `Brakes: ${data.brakes}`);
-    createElement('p', container, ['description'], `Price: ${data.price}`);
-    createElement('p', container, ['description'], `Popular: ${data.popular ? 'Yes' : 'No'}`);
-    const addedContainer: HTMLElement = createElement('div', container, ['added-container', 'basket']);
+    createElement(IMG, container, [ITEM_IMG], '', [[SRC, `./assets/img/${data.img}`]]);
+    createElement(P, container, [DESCRIPTION], `Production year: ${data.age}`);
+    createElement(P, container, [DESCRIPTION], `Company: ${data.make}`);
+    createElement(P, container, [DESCRIPTION], `Quantity: ${data.items}`);
+    createElement(P, container, [DESCRIPTION], `Color: ${data.color}`);
+    createElement(P, container, [DESCRIPTION], `Wheel: ${data.wheel}`);
+    createElement(P, container, [DESCRIPTION], `Brakes: ${data.brakes}`);
+    createElement(P, container, [DESCRIPTION], `Price: ${data.price}`);
+    createElement(P, container, [DESCRIPTION], `Popular: ${data.popular ? YES : NO}`);
+    const addedContainer: HTMLElement = createElement(DIV, container, [ADDED_CONTAINER, BASKET]);
     if (basketItemsStorage.includes(data.name)) {
-        addedContainer.classList.remove('basket');
+        addedContainer.classList.remove(BASKET);
     }
-    createElement('p', addedContainer, ['added-text'], 'Added to Cart');
+    createElement(P, addedContainer, [ADDED_TEXT], ADDED_TO_CART);
     return container;
 }
 
 export function renderItems(data: DataObject[]): void {
-    const parentElement = elementDomStorage.get('items-container');
+    const parentElement = elementDomStorage.get(ITEMS_CONTAINER);
     parentElement?.forEach((el) => {
         el.innerHTML = '';
         if (!data.length) {
@@ -37,5 +37,5 @@ export function renderItems(data: DataObject[]): void {
 }
 
 function emptyData(parentElement: HTMLElement): void {
-    createElement('h1', parentElement, ['attention'], 'Sorry, there is no products...');
+    createElement(H1, parentElement, [ATTENTION], SORRY_NO_PRODUCTS);
 }
