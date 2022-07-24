@@ -9,7 +9,7 @@ export function filterCheckbox(data: DataObject[]): DataObject[] {
     elementDomStorage.get(INPUT)?.forEach((el) => {
         const input = el as HTMLInputElement;
         const inputClass = [...input.classList].slice(MINUS_ONE)[ZERO];
-        if (input.checked === true) {
+        if (input.checked) {
             addToMap(mapFilters, inputClass, input.value);
         }
     });
