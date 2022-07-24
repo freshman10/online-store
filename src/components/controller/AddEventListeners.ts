@@ -106,7 +106,7 @@ export function addToBasket(): void {
     });
 }
 
-export function resetButtonListners(target: string, eventType: string, data: DataObject[]): void {
+export function resetButtonListeners(target: string, eventType: string, data: DataObject[]): void {
     elementDomStorage.get(target)?.forEach((el) =>
         el.addEventListener(eventType, () => {
             if (target === RESET_FILTERS) {
@@ -183,7 +183,7 @@ function resetSorting(): void {
     renderBasket(items);
 }
 
-export function addEventListnerSpoiler(elementClass: string, eventType: string, targets: [string, string][]): void {
+export function addEventListenerSpoiler(elementClass: string, eventType: string, targets: [string, string][]): void {
     elementDomStorage.get(elementClass)?.forEach((element) => {
         element.addEventListener(eventType, () => {
             targets.forEach((target) => {
@@ -198,7 +198,7 @@ export function addEventListnerSpoiler(elementClass: string, eventType: string, 
     });
 }
 
-export function addEventListnerTemplate(
+export function addEventListenerTemplate(
     elementClass: string,
     eventType: string,
     targets: [string, string][],

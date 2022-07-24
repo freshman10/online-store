@@ -1,4 +1,4 @@
-import { resetCheckboxes } from '../controller/AddEventListners';
+import { resetCheckboxes } from '../controller/AddEventListeners';
 import { removeFromLocalStorage, saveFromMap } from '../controller/localStorage';
 import { elementDomStorage } from '../render/generateElement';
 import { DataObject } from '../../constants/types';

@@ -17,7 +17,7 @@ import { setCheckboxes } from '../filters/filterCheckbox';
 import { setPopularFlag } from '../filters/popularFilter';
 import { elementDomStorage } from '../render/generateElement';
 import { DataObject } from '../../constants/types';
-import { renderBasket, renderBasketItems } from './AddEventListners';
+import { renderBasket, renderBasketItems } from './AddEventListeners';
 
 export function saveToLocalStorage(key: string, value: string): void {
     if (key && value && typeof key === STRING && typeof value === STRING) {
