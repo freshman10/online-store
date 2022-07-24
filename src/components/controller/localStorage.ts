@@ -67,7 +67,7 @@ export function applyLocalStorage(data: DataObject[]): void {
         }
     });
     if (popular) {
-        const flag: boolean = popular === TRUE ? true : false;
+        const flag: boolean = popular === TRUE;
         setPopularFlag(flag, data);
     }
     if (search) {
