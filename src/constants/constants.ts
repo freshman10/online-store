@@ -29,7 +29,6 @@ export const SORTING_CONDITIONS = {
         return data.sort((a, b) => b.items - a.items);
     },
 };
-
 export const reserButtons: string[] = ['filters', 'setting'];
 export const basketItemsStorage: string[] = [];
 export const MINUS_ONE = -1;
@@ -184,6 +183,8 @@ export const HIDE = 'hide';
 export const SORRY = 'Sorry. All available slots are exhausted.';
 export const NO_PROBLEM = 'No problem. Got it.';
 export const BACKGROUND_LAYER = 'background-layer';
+export const HIDE_LAYERS_ARRAY = [WARNING_CONTAINER, BACKGROUND_LAYER];
+export const LISTEN_ELEMENTS_ARRAY = [BACKGROUND_LAYER, WARNING_BUTTON];
 export const selfCheck = `Total score 220/200 points.
 
 Если вы нашли не соответствие требованиям, то не стесняйтесь писать в дискорд. Исправлю, мне не сложно :)

@@ -4,6 +4,8 @@ import {
     CLICK,
     DIV,
     HIDE,
+    HIDE_LAYERS_ARRAY,
+    LISTEN_ELEMENTS_ARRAY,
     NO_PROBLEM,
     P,
     RESET_BUTTON,
@@ -29,7 +31,7 @@ function hideElement(target: string): void {
 }
 
 function addEventListenerWarning() {
-    [BACKGROUND_LAYER, WARNING_BUTTON].forEach((el) => hideElement(el));
+    LISTEN_ELEMENTS_ARRAY.forEach((el) => hideElement(el));
 }
 
 function addClass(target: string, className: string): void {
@@ -40,6 +42,6 @@ function addClass(target: string, className: string): void {
 
 function hideWarning(element: HTMLElement): void {
     element.addEventListener(CLICK, () => {
-        [WARNING_CONTAINER, BACKGROUND_LAYER].forEach((el) => addClass(el, HIDE));
+        HIDE_LAYERS_ARRAY.forEach((el) => addClass(el, HIDE));
     });
 }
