@@ -48,10 +48,7 @@ export function addToMap<T, P>(map: Map<T, P[]>, key: T, value: P): Map<T, P[]> 
 export function setCheckboxes(className: string, items: string[]): void {
     elementDomStorage.get(className)?.forEach((el) => {
         const input = el as HTMLInputElement;
-        input.checked = false;
-        if (items.includes(input.value)) {
-            input.checked = true;
-        }
+        input.checked = items.includes(input.value);
     });
 }
 
