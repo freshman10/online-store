@@ -1,3 +1,5 @@
+import { DataObject } from './types';
+
 export const sortingTypes: string[] = [
     'By name, increasing',
     'By name, decreasing',
@@ -6,6 +8,27 @@ export const sortingTypes: string[] = [
     'By quantity, increasing',
     'By quantity, decreasing',
 ];
+
+export const SORTING_CONDITIONS = {
+    [sortingTypes[0]]: function (data: DataObject[]): DataObject[] {
+        return data.sort((a, b) => a.name.localeCompare(b.name));
+    },
+    [sortingTypes[1]]: function (data: DataObject[]): DataObject[] {
+        return data.sort((a, b) => b.name.localeCompare(b.name));
+    },
+    [sortingTypes[2]]: function (data: DataObject[]): DataObject[] {
+        return data.sort((a, b) => a.age - b.age);
+    },
+    [sortingTypes[3]]: function (data: DataObject[]): DataObject[] {
+        return data.sort((a, b) => b.age - a.age);
+    },
+    [sortingTypes[4]]: function (data: DataObject[]): DataObject[] {
+        return data.sort((a, b) => a.items - b.items);
+    },
+    [sortingTypes[5]]: function (data: DataObject[]): DataObject[] {
+        return data.sort((a, b) => b.items - a.items);
+    },
+};
 
 export const reserButtons: string[] = ['filters', 'setting'];
 export const basketItemsStorage: string[] = [];
