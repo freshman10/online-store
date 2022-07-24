@@ -25,7 +25,7 @@ describe('createElement function testing:', () => {
         expect(value).toEqual(result);
     });
 
-    test('should return a simple HTMLElement', () => {
+    test('should return a simple HTMLElement without classes', () => {
         const value = createElement('div', container, []);
         expect(value).toEqual(result);
     });
@@ -59,7 +59,7 @@ describe('createElement function testing:', () => {
         expect(value).toEqual(result);
     });
 
-    test('should return a HTMLElement with classes, text inside and attributes', () => {
+    test('should return a HTMLElement with classes, text inside and a few attributes', () => {
         const value = createElement('p', container, ['test1', 'test2'], 'Some text', [['value', 'test'], ['value2', 'test2']]);
         result = document.createElement('p');
         result.classList.add(...['test1', 'test2']);

@@ -10,11 +10,11 @@ describe('getFromLocalStorage function testing', () => {
         expect(getFromLocalStorage).toBeDefined();
     })
 
-    test('should do nothing', () => {
+    test('should do nothing with zero arguments', () => {
         expect(getFromLocalStorage()).toBe('');
     })
 
-    test('should do nothing', () => {
+    test('should do nothing with wrong arguments', () => {
         expect(getFromLocalStorage(1)).toBe('');
     })
 
@@ -23,7 +23,7 @@ describe('getFromLocalStorage function testing', () => {
         expect(getFromLocalStorage('1')).toBe('1');
     })
 
-    test('should get a string', () => {
+    test('should get a string for multyple items inside', () => {
         window.localStorage.setItem('2', '2');
         window.localStorage.setItem('3', '3333');
         expect(getFromLocalStorage('2')).toBe('2');

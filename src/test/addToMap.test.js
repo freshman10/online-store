@@ -23,7 +23,7 @@ describe('addToMap function testing:', () => {
         expect(map).toEqual(expectedValue);
     })
 
-    test('should add one element', () => {
+    test('should add one element with updating value', () => {
         addToMap(map, 'test', 'value1');
         addToMap(map, 'test', 'value2');
         const expectedValue = new Map();

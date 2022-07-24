@@ -1,4 +1,4 @@
-const { countItemsInBasket } = require('../components/controller/AddEventListners');
+const { countItemsInBasket } = require('../components/controller/AddEventListeners');
 const { basketItemsStorage } = require('../constants/constants');
 
 describe('countItemsInBasket function testing', () => {

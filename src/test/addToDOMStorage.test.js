@@ -17,12 +17,12 @@ describe('addToDOMStorage function testing:', () => {
     expect(addToDOMStorage).toBeDefined();
   });
 
-  test('should be empty', () => {
+  test('should be empty with wrong arguments', () => {
     addToDOMStorage('some wrong data');
     expect(elementDomStorage).toEqual(result);
   });
 
-  test('should be empty', () => {
+  test('should be empty without arguments', () => {
     addToDOMStorage();
     expect(elementDomStorage).toEqual(result);
   });
@@ -33,7 +33,7 @@ describe('addToDOMStorage function testing:', () => {
     expect(elementDomStorage).toEqual(result);
   });
 
-  test('should add one element to the storage', () => {
+  test('should add one element to the storage and skip element without class', () => {
     result.set('test1', [element]);
     addToDOMStorage(element);
     addToDOMStorage(anotherElement);
@@ -46,7 +46,7 @@ describe('addToDOMStorage function testing:', () => {
     expect(elementDomStorage).toEqual(result);
   });
 
-  test('should add two elements to the storage', () => {
+  test('should add two elements to the storage from one element with two classes', () => {
     element.classList.add('test2')
     result.set('test1', [element]);
     result.set('test2', [element]);

@@ -8,11 +8,8 @@ describe('popularFilter function testing:', () => {
         expect(getUnique).toBeDefined();
     });
 
-    test('should do nothing', ()=> {
+    test('should do nothing with wrong arguments', ()=> {
         expect(getUnique(1, 1)).toEqual([]);
-    })
-
-    test('should do nothing', ()=> {
         expect(getUnique('1', 1)).toEqual([]);
     })
 
@@ -26,7 +23,7 @@ describe('popularFilter function testing:', () => {
         expect(getUnique('name', data)).toEqual(expected);
     })
 
-    test('should return unique', ()=> {
+    test('should return unique for a few elements', ()=> {
         const arr = data.slice(0,1).concat(data.slice(0,1));
         const expected = arr.reduce((acc,el) => {
             if (!acc.includes(el.name)) {

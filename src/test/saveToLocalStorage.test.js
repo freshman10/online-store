@@ -10,20 +10,18 @@ describe('saveToLocalStorage function testing', () => {
         expect(saveToLocalStorage).toBeDefined();
     })
 
-    test('should do nothing', () => {
+    test('should do nothing without arguments', () => {
         saveToLocalStorage();
         expect(window.localStorage.length).toBe(0);
     })
 
-    test('should do nothing', () => {
+    test('should do nothing wrong arguments', () => {
         saveToLocalStorage(1, 1);
         expect(window.localStorage.length).toBe(0);
-    })
-
-    test('should do nothing', () => {
         saveToLocalStorage(1, "1");
         expect(window.localStorage.length).toBe(0);
     })
+
 
     test('should add one element', () => {
         saveToLocalStorage("1", "1");

@@ -22,7 +22,7 @@ describe('removeFromLocalStorage function testing', () => {
         expect(window.localStorage.length).toBe(0);
     })
 
-    test('should erase one element', () => {
+    test('should erase one element for a few keys inside', () => {
         window.localStorage.setItem('1', '1');
         window.localStorage.setItem('2', '2');
         removeFromLocalStorage('1')

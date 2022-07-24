@@ -10,38 +10,38 @@ describe('saveFromMap function testing', () => {
         expect(saveFromMap).toBeDefined();
     })
 
-    test('should do nothing', () => {
+    test('should do nothing with zero arguments', () => {
         saveFromMap()
         expect(window.localStorage.length).toBe(0);
     })
 
-    test('should do nothing', () => {
+    test('should do nothing with wrong arguments part 1', () => {
         saveFromMap(1)
         expect(window.localStorage.length).toBe(0);
     })
 
-    test('should do nothing', () => {
+    test('should do nothing with wrong arguments part 2', () => {
         const input = new Map();
         input.set(1, 1);
         saveFromMap(input);
         expect(window.localStorage.length).toBe(0);
     })
 
-    test('should do nothing', () => {
+    test('should do nothing with wrong arguments part 3', () => {
         const input = new Map();
         input.set(1, [1,2,3]);
         saveFromMap(input);
         expect(window.localStorage.length).toBe(0);
     })
 
-    test('should do nothing', () => {
+    test('should do nothing with wrong arguments part 4', () => {
         const input = new Map();
         input.set('1', []);
         saveFromMap(input);
         expect(window.localStorage.length).toBe(0);
     })
 
-    test('should do nothing', () => {
+    test('should do nothing with wrong arguments part 5', () => {
         const input = new Map();
         input.set("1", [1,2,3]);
         saveFromMap(input);
