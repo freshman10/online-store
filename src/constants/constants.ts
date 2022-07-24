@@ -1,33 +1,16 @@
-import { DataObject } from './types';
-
-export const sortingTypes: string[] = [
-    'By name, increasing',
-    'By name, decreasing',
-    'By year, increasing',
-    'By year, decreasing',
-    'By quantity, increasing',
-    'By quantity, decreasing',
-];
+import { DataObject, sortingTypes } from './types';
 
 export const SORTING_CONDITIONS = {
-    [sortingTypes[0]]: function (data: DataObject[]): DataObject[] {
-        return data.sort((a, b) => a.name.localeCompare(b.name));
-    },
-    [sortingTypes[1]]: function (data: DataObject[]): DataObject[] {
-        return data.sort((a, b) => b.name.localeCompare(b.name));
-    },
-    [sortingTypes[2]]: function (data: DataObject[]): DataObject[] {
-        return data.sort((a, b) => a.age - b.age);
-    },
-    [sortingTypes[3]]: function (data: DataObject[]): DataObject[] {
-        return data.sort((a, b) => b.age - a.age);
-    },
-    [sortingTypes[4]]: function (data: DataObject[]): DataObject[] {
-        return data.sort((a, b) => a.items - b.items);
-    },
-    [sortingTypes[5]]: function (data: DataObject[]): DataObject[] {
-        return data.sort((a, b) => b.items - a.items);
-    },
+    [sortingTypes['By name, increasing']]: (data: DataObject[]): DataObject[] =>
+        data.sort((a, b) => a.name.localeCompare(b.name)),
+    [sortingTypes['By name, decreasing']]: (data: DataObject[]): DataObject[] =>
+        data.sort((a, b) => b.name.localeCompare(b.name)),
+    [sortingTypes['By year, increasing']]: (data: DataObject[]): DataObject[] => data.sort((a, b) => a.age - b.age),
+    [sortingTypes['By year, decreasing']]: (data: DataObject[]): DataObject[] => data.sort((a, b) => b.age - a.age),
+    [sortingTypes['By quantity, increasing']]: (data: DataObject[]): DataObject[] =>
+        data.sort((a, b) => a.items - b.items),
+    [sortingTypes['By quantity, decreasing']]: (data: DataObject[]): DataObject[] =>
+        data.sort((a, b) => b.items - a.items),
 };
 export const reserButtons: string[] = ['filters', 'setting'];
 export const basketItemsStorage: string[] = [];
