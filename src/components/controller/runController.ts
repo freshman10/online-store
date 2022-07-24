@@ -10,7 +10,7 @@ import {
     addToBasket,
     resetButtonListeners,
 } from './AddEventListeners';
-import { saveToLocalStorage } from './localStorage';
+import { removeFromLocalStorage, saveToLocalStorage } from './localStorage';
 import {
     CHANGE,
     CHECKED_IMG,
@@ -54,7 +54,12 @@ function generateListeners(options: Map<string, string[]>, data: DataObject[]): 
             value.forEach((eventType) => {
                 el.addEventListener(eventType, () => {
                     if (key === INPUT_SEARCH) {
-                        saveToLocalStorage(SEARCH, (el as HTMLInputElement).value);
+                        const inputPattern: string = (el as HTMLInputElement).value;
+                        if (!inputPattern) {
+                            removeFromLocalStorage(SEARCH);
+                        } else {
+                            saveToLocalStorage(SEARCH, inputPattern);
+                        }
                     }
                     if (key === SORTING_DROPLIST) {
                         elementDomStorage.get(key)?.forEach((item) => {
