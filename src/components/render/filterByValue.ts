@@ -50,8 +50,8 @@ import {
 function createPopularFilter(parentElement: HTMLElement): void {
     const container = createElement(DIV, parentElement, [POPULAR_CONTAINER]);
     createElement(H3, container, [POPULAR_LABEL], SHOW_POPULAR);
-    const populatCheckbox = createElement(DIV, container, [POPULAR_CHECKBOX]);
-    createElement(IMG, populatCheckbox, [CHECKED_IMG, HIDE], EMPTY, [
+    const popularCheckbox = createElement(DIV, container, [POPULAR_CHECKBOX]);
+    createElement(IMG, popularCheckbox, [CHECKED_IMG, HIDE], EMPTY, [
         [SRC, TICK_PATH],
         [ALT, GREEN_TICK],
     ]);
