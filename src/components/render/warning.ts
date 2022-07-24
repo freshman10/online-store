@@ -22,22 +22,24 @@ export function renderWarning(): void {
     addEventListenerWarning();
 }
 
-function addEventListenerWarning() {
-    elementDomStorage.get(BACKGROUND_LAYER)?.forEach((el) => {
+function hideElement(target: string): void {
+    elementDomStorage.get(target)?.forEach((el) => {
         hideWarning(el);
     });
-    elementDomStorage.get(WARNING_BUTTON)?.forEach((el) => {
-        hideWarning(el);
+}
+
+function addEventListenerWarning() {
+    [BACKGROUND_LAYER, WARNING_BUTTON].forEach((el) => hideElement(el));
+}
+
+function addClass(target: string, className: string): void {
+    elementDomStorage.get(target)?.forEach((el) => {
+        el.classList.add(className);
     });
 }
 
 function hideWarning(element: HTMLElement): void {
     element.addEventListener(CLICK, () => {
-        elementDomStorage.get(WARNING_CONTAINER)?.forEach((el) => {
-            el.classList.add(HIDE);
-        });
-        elementDomStorage.get(BACKGROUND_LAYER)?.forEach((el) => {
-            el.classList.add(HIDE);
-        });
+        [WARNING_CONTAINER, BACKGROUND_LAYER].forEach((el) => addClass(el, HIDE));
     });
 }
