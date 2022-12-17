@@ -1,16 +1,12 @@
-import { DataObject, sortingTypes } from './types';
+import { DataObject } from './types';
 
 export const SORTING_CONDITIONS = {
-    [sortingTypes['By name, increasing']]: (data: DataObject[]): DataObject[] =>
-        data.sort((a, b) => a.name.localeCompare(b.name)),
-    [sortingTypes['By name, decreasing']]: (data: DataObject[]): DataObject[] =>
-        data.sort((a, b) => b.name.localeCompare(b.name)),
-    [sortingTypes['By year, increasing']]: (data: DataObject[]): DataObject[] => data.sort((a, b) => a.age - b.age),
-    [sortingTypes['By year, decreasing']]: (data: DataObject[]): DataObject[] => data.sort((a, b) => b.age - a.age),
-    [sortingTypes['By quantity, increasing']]: (data: DataObject[]): DataObject[] =>
-        data.sort((a, b) => a.items - b.items),
-    [sortingTypes['By quantity, decreasing']]: (data: DataObject[]): DataObject[] =>
-        data.sort((a, b) => b.items - a.items),
+    'By name, increasing': (data: DataObject[]): DataObject[] => data.sort((a, b) => a.name.localeCompare(b.name)),
+    'By name, decreasing': (data: DataObject[]): DataObject[] => data.sort((a, b) => b.name.localeCompare(b.name)),
+    'By year, increasing': (data: DataObject[]): DataObject[] => data.sort((a, b) => a.age - b.age),
+    'By year, decreasing': (data: DataObject[]): DataObject[] => data.sort((a, b) => b.age - a.age),
+    'By quantity, increasing': (data: DataObject[]): DataObject[] => data.sort((a, b) => a.items - b.items),
+    'By quantity, decreasing': (data: DataObject[]): DataObject[] => data.sort((a, b) => b.items - a.items),
 };
 export const reserButtons: string[] = ['filters', 'setting'];
 export const basketItemsStorage: string[] = [];
