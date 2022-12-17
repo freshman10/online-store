@@ -1,7 +1,7 @@
 1. Task: https://github.com/rolling-scopes-school/tasks/tree/master/tasks/online-store
 2. Screenshot:
 ![Screenshot_1](https://user-images.githubusercontent.com/70628469/179837904-c207bfd5-0895-4b94-b091-94819db5bf34.png)
-3. Deploy: none
+3. Deploy: https://freshman10.github.io/online-store/dist/
 4. Done 19.07.2022 / deadline 19.07.2022
 5. Score: 200 / 200
 
